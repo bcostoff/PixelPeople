@@ -4,18 +4,6 @@ const express = require('express');
 var mysql = require('mysql');
 var fs = require('fs');
 
-var con = mysql.createConnection({
-    host: "rsgdevtest",
-    user: "root",
-    password: "rsgP@ssw0rdroot",
-    database: 'pxlppl'
-});
-
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-});
-
 const PORT = process.env.PORT || 3001;
 
 const app = express();
