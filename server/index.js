@@ -23,15 +23,6 @@ app.get("/person", (req, res) => {
         var set2 = setArray[1].length;
         res.json({ id: r.id, set1: set1, set2: set2, hint: r.hint });
     });
-   
-    // con.query("SELECT * FROM person WHERE expired = 'N' ORDER BY person_id ASC LIMIT 1", function (err, result, fields) {
-    //     if (err) throw err;
-    //     // console.log(result);
-    //     var setArray = result[0].name.split(' ');
-    //     var set1 = setArray[0].length;
-    //     var set2 = setArray[1].length;
-    //     res.json({ id: result[0].person_id, set1: set1, set2: set2, hint: result[0].hint });
-    // });
     
 });
 
@@ -43,12 +34,6 @@ app.get("/hint", (req, res) => {
         let r = obj.data.find(a => a.expired == 'N');
         res.json({ hint: r.hint });
     });
-
-    // con.query("SELECT hint FROM person WHERE expired = 'N' ORDER BY person_id ASC LIMIT 1", function (err, result, fields) {
-    //     if (err) throw err;
-    //     // console.log(result);
-    //     res.json({ hint: result[0].hint });
-    // });
     
 });
 
@@ -72,19 +57,6 @@ app.post('/guess', (req, res) => {
         }
         res.json({ result: value });
     });
-    
-    // con.query("SELECT * FROM person WHERE expired = 'N' ORDER BY person_id ASC LIMIT 1", function (err, result, fields) {
-    //     if (err) throw err;
-    //     // console.log(result);
-    //     let r = '';
-    //     var name = result[0].name.replace(' ','');
-    //     if (name === guess) {
-    //         r = 'correct';
-    //     } else {
-    //         r = 'wrong'
-    //     }
-    //     res.json({ result: r });
-    // });
 })
 
 
