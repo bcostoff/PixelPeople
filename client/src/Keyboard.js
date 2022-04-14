@@ -67,11 +67,11 @@ class Keyboard extends Component {
             .then(res => this.setState({
                 status: res.result
             }, () => {
-                if (this.state.status === 'correct') {
+                if (this.state.status === 'Correct') {
                     this.props.setWon()
                     this.props.setCurrentStreak()
                 }
-                if (this.state.status === 'wrong') {
+                if (this.state.status === 'Wrong') {
                     this.props.resetCurrentStreak()
                 }
                 this.props.setPlayed()
@@ -121,7 +121,7 @@ class Keyboard extends Component {
         return(
             <div id="Board">
 
-                <span class="status">{this.state.status}</span>
+                <span class="status">{this.state.status}</span><br></br>
                 <span class="help">{this.state.hint}</span>
                 <img src={'/images/characters/' + this.state.id + '.png' } class="wow fadeIn img-responsive center-block" style={{ width: "100%", height: "auto" }} alt="Pixel Person"></img>
                 
