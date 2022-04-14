@@ -2,17 +2,7 @@
 const express = require("express");
 var mysql = require('mysql');
 
-var con = mysql.createConnection({
-    host: "rsgdevtest",
-    user: "root",
-    password: "rsgP@ssw0rdroot",
-    database: 'pxlppl'
-});
 
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-});
 
 // {
 //     "id": "1",
