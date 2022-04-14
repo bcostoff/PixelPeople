@@ -51,9 +51,9 @@ app.post('/guess', (req, res) => {
         let value = '';
         var name = r.name.replace(' ','');
         if (name === guess) {
-            value = 'correct';
+            value = 'Correct';
         } else {
-            value = 'wrong'
+            value = 'Wrong'
         }
         res.json({ result: value });
     });
