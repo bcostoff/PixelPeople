@@ -21,6 +21,9 @@ class Keyboard extends Component {
     }
 
     handleKeyClick = event => {
+        if (this.state.status === 'Correct' || this.state.status === 'Wrong') {
+            return;
+        }
         let pressedKey = event.target.innerHTML;
         if (pressedKey === 'Del') {
             this.removeLetter()
@@ -121,55 +124,55 @@ class Keyboard extends Component {
         return(
             <div id="Board">
 
-                <span class="status">{this.state.status}</span><br></br>
-                <span class="help">{this.state.hint}</span>
-                <img src={'/images/characters/' + this.state.id + '.png' } class="wow fadeIn img-responsive center-block" style={{ width: "100%", height: "auto" }} alt="Pixel Person"></img>
+                <span className="status">{this.state.status}</span><br></br>
+                <span className="help">{this.state.hint}</span>
+                <img src={'/images/characters/' + this.state.id + '.png' } className="wow fadeIn img-responsive center-block" style={{ width: "100%", height: "auto" }} alt="Pixel Person"></img>
                 
                 <div id="Answer">
                     {contentBlock}
-                    <div class="clearfix">&nbsp;</div>
+                    <div className="clearfix">&nbsp;</div>
                     
                 </div>
 
                 <div id="Letters">
 
                     <div id="keyboard-cont">
-                        <div class="first-row">
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>q</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>w</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>e</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>r</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>t</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>y</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>u</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>i</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>o</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>p</button>
+                        <div className="first-row">
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>q</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>w</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>e</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>r</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>t</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>y</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>u</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>i</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>o</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>p</button>
                         </div>
-                        <div class="second-row">
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>a</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>s</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>d</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>f</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>g</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>h</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>j</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>k</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>l</button>
+                        <div className="second-row">
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>a</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>s</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>d</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>f</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>g</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>h</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>j</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>k</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>l</button>
                         </div>
-                        <div class="third-row">
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>z</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>x</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>c</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>v</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>b</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>n</button>
-                            <button class="letter-box keyboard-button" onClick={this.handleKeyClick}>m</button>
+                        <div className="third-row">
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>z</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>x</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>c</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>v</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>b</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>n</button>
+                            <button className="letter-box keyboard-button" onClick={this.handleKeyClick}>m</button>
                         </div>
-                        <div class="fourth-row">
-                            <button class="letter-box -lgbox keyboard-button" onClick={this.handleKeyClick}>Del</button>
-                            <button class="letter-box -lgbox keyboard-button" onClick={this.handleKeyClick}>Enter</button>
-                            <button class="letter-box -lgbox keyboard-button" onClick={this.handleKeyClick}>Hint</button>
+                        <div className="fourth-row">
+                            <button className="letter-box -lgbox keyboard-button" onClick={this.handleKeyClick}>Del</button>
+                            <button className="letter-box -lgbox keyboard-button" onClick={this.handleKeyClick}>Enter</button>
+                            <button className="letter-box -lgbox keyboard-button" onClick={this.handleKeyClick}>Hint</button>
                         </div>
                     </div>
                 </div>

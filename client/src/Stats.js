@@ -22,11 +22,14 @@ class Stats extends Component {
 
     render() {
         const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
-        let winPercentage = this.props.ppWon / this.props.ppPlayed * 100;
+        let winPercentage = 0;
+        if (isNaN(this.props.ppWon) && isNaN(this.props.ppPlayed)) {
+            winPercentage = this.props.ppWon / this.props.ppPlayed * 100;
+        }
         let lost = this.props.ppPlayed - this.props.ppWon;
         return(
             <div className={showHideClassName}>
-                <section className="modal-main">
+                <section className={"modal-main"}>
                     <h2>Statistics</h2>
                     <div className={'columns-center'}>Played</div>
                     <div className={'columns-center'}>Win %</div>

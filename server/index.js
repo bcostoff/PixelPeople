@@ -24,7 +24,7 @@ app.get("/person", (req, res) => {
         res.json({ id: r.id, set1: set1, set2: set2, hint: r.hint });
     });
     
-});
+}); 
 
 app.get("/hint", (req, res) => {
     var obj;

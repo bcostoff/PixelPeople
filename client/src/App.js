@@ -106,10 +106,15 @@ class App extends Component {
     this.setState({ showModal: false });
   };
 
+  handleStatsClick = event => {
+    this.showModal();
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">Pixel People</header>
+      <div className={"App"}>
+        <button onClick={this.handleStatsClick}><i className={"fa-solid fa-chart-bar"}></i></button>
+        <header className={"App-header"}>Pixel People</header>
         <Stats show={this.state.showModal} hideModal={ this.hideModal } ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed}></Stats>
         <Keyboard showModal={ this.showModal } setPlayed={ this.setPlayed } setWon={ this.setWon } setCurrentStreak={ this.setCurrentStreak } setHintsUsed={ this.setHintsUsed } resetCurrentStreak={ this.resetCurrentStreak }></Keyboard>
       </div>
