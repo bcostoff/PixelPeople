@@ -1,7 +1,7 @@
 import { Component } from 'react';
 // import ReactDOM from 'react-dom';
 import './App.css';
-
+ 
 class Keyboard extends Component {
     constructor(props) {
         // Required step: always call the parent class' constructor
