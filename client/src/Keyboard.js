@@ -127,7 +127,7 @@ class Keyboard extends Component {
 
                 <span className="status">{this.state.status}</span><br></br>
                 <span className="help">{this.state.hint}</span>
-                <img src={'/images/characters/' + this.state.id + '.png' } className="wow fadeIn img-responsive center-block" style={{ width: "100%", height: "auto" }} alt="Pixel Person"></img>
+                <img src={'/images/characters/' + this.state.id + '.png' } className="personImg" style={{ width: "100%", height: "auto" }} alt="Pixel Person"></img>
                 
                 <div id="Answer">
                     {contentBlock}

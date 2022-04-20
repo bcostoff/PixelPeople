@@ -141,8 +141,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        
-        <header className="App-header">Pixel People <FontAwesomeIcon icon={faChartBar} size={'1x'} onClick={this.handleStatsClick} /></header>
+        <div id="clouds"></div>
+        <header className="App-header"><span className="col-20"></span><span className="col-60 --shadow">Pixel People</span><span className="col-20"><FontAwesomeIcon icon={faChartBar} size={'1x'} onClick={this.handleStatsClick} /></span> </header>
         <Stats show={this.state.showModal} hideModal={ this.hideModal } ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed}></Stats>
         <Keyboard showModal={ this.showModal } setPlayed={ this.setPlayed } setWon={ this.setWon } setCurrentStreak={ this.setCurrentStreak } setHintsUsed={ this.setHintsUsed } resetCurrentStreak={ this.resetCurrentStreak } setStatus={ this.setStatus } ppStatus={this.state.ppStatus} ></Keyboard> 
       </div>
