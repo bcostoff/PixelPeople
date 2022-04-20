@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChartBar } from '@fortawesome/free-solid-svg-icons'
 import Keyboard from './Keyboard';
 import Stats from './Stats';
 
@@ -12,53 +14,79 @@ class App extends Component {
       ppWon: 0,
       ppCurrentStreak: 0,
       ppMaxStreak: 0,
-      ppHintsUsed: 0
+      ppHintsUsed: 0,
+      ppDate: null,
+      ppStatus: null
     };
     // this.showModal = this.showModal.bind(this);
     // this.hideModal = this.hideModal.bind(this);
     // localStorage.setItem('myCat', 'Tom');
     // localStorage.removeItem('myCat');
 
+    if("ppStatus" in localStorage){
+      this.ppStatus = localStorage.getItem('ppStatus')
+    }else{
+      localStorage.setItem('ppStatus', null)
+    }
+
     if("ppPlayed" in localStorage){
-      this.setState({
-        ppPlayed: localStorage.getItem('ppPlayed')
-      })
+      this.ppPlayed = localStorage.getItem('ppPlayed')
     }else{
       localStorage.setItem('ppPlayed', '')
     }
 
     if("ppWon" in localStorage){
-      this.setState({
-        ppWon: localStorage.getItem('ppWon')
-      })
+      this.ppWon = localStorage.getItem('ppWon')
     }else{
       localStorage.setItem('ppWon', '')
     }
 
     if("ppCurrentStreak" in localStorage){
-      this.setState({
-        ppCurrentStreak: localStorage.getItem('ppCurrentStreak')
-      })
+      this.ppCurrentStreak = localStorage.getItem('ppCurrentStreak')
     }else{
       localStorage.setItem('ppCurrentStreak', '')
     }
 
     if("ppMaxStreak" in localStorage){
-      this.setState({
-        ppMaxStreak: localStorage.getItem('ppMaxStreak')
-      })
+      this.ppMaxStreak = localStorage.getItem('ppMaxStreak')
     }else{
       localStorage.setItem('ppMaxStreak', '')
     }
 
     if("ppHintsUsed" in localStorage){
-      this.setState({
-        ppHintsUsed: localStorage.getItem('ppHintsUsed')
-      })
+      this.ppHintsUsed = localStorage.getItem('ppHintsUsed')
     }else{
       localStorage.setItem('ppHintsUsed', '')
     }
+    
   }
+
+  componentDidMount() {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1; 
+    let yyyy = today.getFullYear();
+    let curDate = mm + '-' + dd + '-' + yyyy
+
+    if("ppDate" in localStorage){
+      this.setState({
+        ppDate: localStorage.getItem('ppDate')
+      }, () => {
+        if (this.state.ppDate !== curDate) {
+          localStorage.setItem('ppDate', curDate)
+          localStorage.setItem('ppStatus', null)
+          window.location.reload()
+        }
+      })
+    }else{
+      localStorage.setItem('ppDate', curDate)
+    }
+  }
+
+  setStatus = (status) => {
+    localStorage.setItem('ppStatus', status)
+    this.setState({ ppStatus: status });
+  };
 
   setPlayed = () => {
     let played = this.state.ppPlayed
@@ -112,11 +140,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className={"App"}>
-        <button onClick={this.handleStatsClick}><i className={"fa-solid fa-chart-bar"}></i></button>
-        <header className={"App-header"}>Pixel People</header>
+      <div className="App">
+        
+        <header className="App-header">Pixel People <FontAwesomeIcon icon={faChartBar} size={'1x'} onClick={this.handleStatsClick} /></header>
         <Stats show={this.state.showModal} hideModal={ this.hideModal } ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed}></Stats>
-        <Keyboard showModal={ this.showModal } setPlayed={ this.setPlayed } setWon={ this.setWon } setCurrentStreak={ this.setCurrentStreak } setHintsUsed={ this.setHintsUsed } resetCurrentStreak={ this.resetCurrentStreak }></Keyboard>
+        <Keyboard showModal={ this.showModal } setPlayed={ this.setPlayed } setWon={ this.setWon } setCurrentStreak={ this.setCurrentStreak } setHintsUsed={ this.setHintsUsed } resetCurrentStreak={ this.resetCurrentStreak } setStatus={ this.setStatus } ppStatus={this.state.ppStatus} ></Keyboard> 
       </div>
     );
   }

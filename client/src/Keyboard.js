@@ -9,7 +9,7 @@ class Keyboard extends Component {
     
         // Set the state directly. Use props if necessary.
         this.state = {
-            id: null,
+            id: 0,
             set1: null,
             set2: null,
             total: null,
@@ -21,7 +21,7 @@ class Keyboard extends Component {
     }
 
     handleKeyClick = event => {
-        if (this.state.status === 'Correct' || this.state.status === 'Wrong') {
+        if (this.props.ppStatus !== null) {
             return;
         }
         let pressedKey = event.target.innerHTML;
@@ -77,6 +77,7 @@ class Keyboard extends Component {
                 if (this.state.status === 'Wrong') {
                     this.props.resetCurrentStreak()
                 }
+                this.props.setStatus(this.state.status)
                 this.props.setPlayed()
                 setTimeout(() => this.props.showModal(), 2000)
                 // console.log(this.state)
@@ -115,11 +116,11 @@ class Keyboard extends Component {
         const length1 = this.state.set1;
         const t = this.state.total;
         let contentBlock = Array(t).fill().map((e, i) => { 
-            let block = <div style={{ display: "inline-block" }}><button>{this.state.guessArray[i]}</button></div>
+            let block = <div style={{ display: "inline-block" }} key={i}><button key={i}>{this.state.guessArray[i]}</button></div>
             return block;
         })
         if (this.state.set2) {
-            contentBlock.splice(length1, 0, <div class="clearfix"></div>);
+            contentBlock.splice(length1, 0, <div className="clearfix"></div>);
         }
         return(
             <div id="Board">
