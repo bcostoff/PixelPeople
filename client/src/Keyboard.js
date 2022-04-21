@@ -125,7 +125,7 @@ class Keyboard extends Component {
         return(
             <div id="Board">
 
-                <span className="status">{this.state.status}</span><br></br>
+                <span className="status">{this.state.status}</span>
                 <span className="help">{this.state.hint}</span>
                 <img src={'/images/characters/' + this.state.id + '.png' } className="personImg" style={{ width: "100%", height: "auto" }} alt="Pixel Person"></img>
                 
