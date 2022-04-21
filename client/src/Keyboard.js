@@ -116,7 +116,7 @@ class Keyboard extends Component {
         const length1 = this.state.set1;
         const t = this.state.total;
         let contentBlock = Array(t).fill().map((e, i) => { 
-            let block = <div style={{ display: "inline-block" }} key={i}><button key={i}>{this.state.guessArray[i]}</button></div>
+            let block = <div style={{ display: "inline-block" }} className="guess-box" key={i}>{this.state.guessArray[i]}</div>
             return block;
         })
         if (this.state.set2) {

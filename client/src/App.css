@@ -36,11 +36,12 @@
   font-size: calc(10px + 2vmin);
   color: white;
   z-index:10;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .App-header > span{
   padding-top:25px;
-  font-size: calc(14px + 2vmin);
+  font-size: calc(4px + 2vmin);
   color: white;
 }
 
@@ -85,11 +86,43 @@
   z-index:0;
 }
 
-.col-20{
-  width:20%;
+.col-10{
+  width:10%;
   display:inline-block;
 }
-.col-60{
-  width:60%;
+.col-80{
+  width:80%;
   display:inline-block;
+}
+
+.pt-10{
+  padding-top:10px!important;
+}
+
+.pt-5{
+  padding-top:5px!important;
+}
+
+.noPad{
+  padding:0px!important;
+}
+
+.letter-box{
+  font-family: 'Press Start 2P', cursive;
+  padding:7px 5px 5px 7px;
+  margin:2px;
+  background-color:#ffffff;
+  color:#333333;
+  text-transform: uppercase;
+  border-radius: 0px;
+  border:none;
+}
+
+.guess-box{
+  padding:7px 5px 5px 7px;
+  margin:2px;
+  background-color:#333333;
+  color:#ffffff;
+  text-transform: uppercase;
+  font-family: 'Press Start 2P', cursive;
 }
