@@ -50,7 +50,7 @@ body {
   font-size: calc(10px + 2vmin);
   /* color: white; */
   color:white;
-  background-color: red;
+  background-color: white;
   z-index:10;
   font-family: 'Press Start 2P', cursive;
 }
@@ -183,10 +183,10 @@ body {
   font-family: 'Press Start 2P', cursive;
   color: black;
   font-size:10px;
-  z-index: 20;
+  z-index: 220;
   position: absolute;
-  top: 120px;
-  right: 40px;
+  top: 80px;
+  right: 20px;
   text-align: center;
   background-color: #ffffff;
   padding: 7px 5px 7px 7px;  
@@ -194,9 +194,23 @@ body {
 	-moz-border-radius:2px;
 	-webkit-border-radius:2px;
   border-radius:2px;
+  min-width: 80px;
   max-width: 100px;
 
   /* display: none; */
+}
+
+.help:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 15px;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-top: solid 6px white;
+  border-left: solid 6px transparent;
+  border-right: solid 6px transparent;
 }
 
 .status{
