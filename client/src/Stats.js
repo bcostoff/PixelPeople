@@ -31,22 +31,28 @@ class Stats extends Component {
             <div className={showHideClassName}>
                 <section className="modal-main">
                     <h2>Statistics</h2>
+                    <hr></hr>
+                    <br></br>
                     <div className='columns-center'>Played</div>
-                    <div className='columns-center'>Win %</div>
-                    <div className='columns-center'>Current Streak</div>
-                    <div className='columns-center'>Max Streak</div>
+                    <div className='columns-center'>Win%</div>                     
                     <div className='columns-center'>{ this.props.ppPlayed }</div>
                     <div className='columns-center'>{ Math.ceil(winPercentage) }</div>
+                    <br></br>
+                    <br></br>
+                    <div className='columns-center'>Current<br></br>Streak</div>
+                    <div className='columns-center'>Max<br></br>Streak</div>
                     <div className='columns-center'>{ this.props.ppCurrentStreak }</div>
                     <div className='columns-center'>{ this.props.ppMaxStreak }</div>
-                    <div>&nbsp;</div>
-                    <div>&nbsp;</div>
-                    <span className='left-text'>Wins: { this.props.ppWon }</span><br></br>
-                    <span className='left-text'>Losses: {lost}</span><br></br>
+                    <br></br>
+                    <br></br>
+                    <hr></hr>
+                    <br></br>
+                    <span className='left-text'>Correct: { this.props.ppWon }</span><br></br>
+                    <span className='left-text'>Incorrect: {lost}</span><br></br>
                     <span className='left-text'>Hints Used: { this.props.ppHintsUsed }</span><br></br>
                     <div>&nbsp;</div>
                     <div>&nbsp;</div>
-              <button type="button" onClick={ this.props.hideModal }>
+              <button type="button" className="close-btn" onClick={ this.props.hideModal }>
                 Close
               </button>
             </section>

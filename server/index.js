@@ -15,13 +15,27 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 app.get("/person", (req, res) => {
     var obj;
     fs.readFile(__dirname + '/people.json', 'utf8', function (err, data) {
-    if (err) throw err;
+        if (err) throw err;
         obj = JSON.parse(data);
         let r = obj.data.find(a => a.expired == 'N');
+        if (typeof r == "undefined") {
+            let fileName = __dirname + '/people.json';
+            for (var i = 0; i < obj.data.length; i++) {
+                obj.data[i].expired = 'N';
+            }
+            fs.writeFile(fileName, JSON.stringify(obj, null, 2), function writeJSON(err) {
+                if (err) return console.log(err);
+            });
+            r = obj.data.find(a => a.expired == 'N');
+        }
         var setArray = r.name.split(' ');
         var set1 = setArray[0].length;
-        var set2 = setArray[1].length;
+        var set2 = null;
+        if (setArray.length > 1) {
+            set2 = setArray[1].length;
+        }
         res.json({ id: r.id, set1: set1, set2: set2, hint: r.hint });
+        
     });
     
 }); 
@@ -35,6 +49,49 @@ app.get("/hint", (req, res) => {
         res.json({ hint: r.hint });
     });
     
+});
+
+app.get("/debug", (req, res) => {
+    var obj;
+    fs.readFile(__dirname + '/people.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        let fileName = __dirname + '/people.json';
+        obj = JSON.parse(data);
+        let r = obj.data.find(a => a.expired == 'N');
+        if (typeof r == "undefined") {
+            for (var i = 0; i < obj.data.length; i++) {
+                obj.data[i].expired = 'N';
+            }
+        } else {
+            r.expired = "Y";
+        }
+        fs.writeFile(fileName, JSON.stringify(obj, null, 2), function writeJSON(err) {
+            if (err) return console.log(err);
+        });
+    });
+
+    fs.readFile(__dirname + '/people.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        obj = JSON.parse(data);
+        let r = obj.data.find(a => a.expired == 'N');
+        if (typeof r == "undefined") {
+            let fileName = __dirname + '/people.json';
+            for (var i = 0; i < obj.data.length; i++) {
+                obj.data[i].expired = 'N';
+            }
+            fs.writeFile(fileName, JSON.stringify(obj, null, 2), function writeJSON(err) {
+                if (err) return console.log(err);
+            });
+            r = obj.data.find(a => a.expired == 'N');
+        }
+        var setArray = r.name.split(' ');
+        var set1 = setArray[0].length;
+        var set2 = null;
+        if (setArray.length > 1) {
+            set2 = setArray[1].length;
+        }
+        res.json({ id: r.id, set1: set1, set2: set2, hint: r.hint });
+    });
 });
 
 app.use(express.json())

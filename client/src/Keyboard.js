@@ -16,7 +16,8 @@ class Keyboard extends Component {
             hint: null,
             status: null,
             nextLetter: 0,
-            guessArray: []
+            guessArray: [],
+            debugEnabled: true
         }
     }
 
@@ -31,6 +32,8 @@ class Keyboard extends Component {
             this.checkGuess()
         } else if (pressedKey === 'Hint') {
             this.showHint()
+        } else if (pressedKey === 'q' && this.state.debugEnabled) {
+            this.myDebug()
         } else {
             this.insertLetter(event.target.innerHTML)
         }
@@ -91,6 +94,19 @@ class Keyboard extends Component {
                 hint: data.hint
             }, () => {
                 this.props.setHintsUsed()
+                // console.log(this.state)
+            })) 
+    }
+
+    myDebug () {
+        fetch('/debug')
+            .then(response => response.json())
+            .then(data => this.setState({
+                id: data.id,
+                set1: data.set1,
+                set2: data.set2,
+                total: data.set1 + data.set2
+            }, () => {
                 // console.log(this.state)
             })) 
     }
@@ -174,6 +190,7 @@ class Keyboard extends Component {
                             <button className="letter-box -lgbox keyboard-button" onClick={this.handleKeyClick}>Del</button>
                             <button className="letter-box -lgbox keyboard-button" onClick={this.handleKeyClick}>Enter</button>
                             <button className="letter-box -lgbox keyboard-button" onClick={this.handleKeyClick}>Hint</button>
+                            <button className="letter-box -lgbox keyboard-button giveup" onClick={this.handleKeyClick}>?</button>
                         </div>
                     </div>
                 </div>

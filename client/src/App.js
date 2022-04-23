@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartSimple } from '@fortawesome/free-solid-svg-icons'
+import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
 import Keyboard from './Keyboard';
 import Stats from './Stats';
 
@@ -140,9 +141,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div id="clouds"></div>
-        <header className="App-header"><span className="col-10"></span><span className="col-80">Pixel People</span><span className="col-10 noPad"><FontAwesomeIcon icon={faChartSimple} size={'1x'} onClick={this.handleStatsClick} /></span><hr></hr></header>
+      <div className="App">        
+        <header className="App-header">
+        <span className="col-10"><FontAwesomeIcon className="info" icon={faCircleQuestion} onClick={this.handleStatsClick} /></span>
+        <span className="col-80">PIXEL_PEOPLE</span>
+        <span className="col-10"><FontAwesomeIcon className="stats" icon={faChartSimple} onClick={this.handleStatsClick} /></span>
+        </header>
         
         <Stats show={this.state.showModal} hideModal={ this.hideModal } ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed}></Stats>
         <Keyboard showModal={ this.showModal } setPlayed={ this.setPlayed } setWon={ this.setWon } setCurrentStreak={ this.setCurrentStreak } setHintsUsed={ this.setHintsUsed } resetCurrentStreak={ this.resetCurrentStreak } setStatus={ this.setStatus } ppStatus={this.state.ppStatus} ></Keyboard> 
