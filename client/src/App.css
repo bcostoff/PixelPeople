@@ -186,7 +186,7 @@ body {
   z-index: 220;
   position: absolute;
   top: 80px;
-  right: 20px;
+  right: 15px;
   text-align: center;
   background-color: #ffffff;
   padding: 7px 5px 7px 7px;  
@@ -230,7 +230,7 @@ body {
   transform: translate(-50%, -50%);
   z-index: 200;
 
-  display: none;
+  /* display: none; */
 }
 
 /* Mobile Only */
