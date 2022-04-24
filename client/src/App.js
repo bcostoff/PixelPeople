@@ -5,12 +5,14 @@ import { faChartSimple } from '@fortawesome/free-solid-svg-icons'
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
 import Keyboard from './Keyboard';
 import Stats from './Stats';
+import Info from './Info';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       showModal: false,
+      showInfoModal: false,
       ppPlayed: 0,
       ppWon: 0,
       ppCurrentStreak: 0,
@@ -139,15 +141,28 @@ class App extends Component {
     this.showModal();
   }
 
+  handleInfoClick = event => {
+    this.showInfoModal();
+  }
+
+  hideInfoModal = () => {
+    this.setState({ showInfoModal: false });
+  };
+
+  showInfoModal = () => {
+    this.setState({ showInfoModal: true });
+  };
+
   render() {
     return (
       <div className="App">        
         <header className="App-header">
-        <span className="col-10"><FontAwesomeIcon className="info" icon={faCircleQuestion} onClick={this.handleStatsClick} /></span>
+        <span className="col-10"><FontAwesomeIcon className="info" icon={faCircleQuestion} onClick={this.handleInfoClick} /></span>
         <span className="col-80">PIXEL PEOPLE</span>
         <span className="col-10"><FontAwesomeIcon className="stats" icon={faChartSimple} onClick={this.handleStatsClick} /></span>
         </header>
-        <Stats show={this.state.showModal} hideModal={ this.hideModal } ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed}></Stats>
+        <Stats show={this.state.showModal} hideModal={this.hideModal} ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed}></Stats>
+        <Info showInfo={this.state.showInfoModal} hideInfoModal={ this.hideInfoModal }></Info>
         <Keyboard showModal={ this.showModal } setPlayed={ this.setPlayed } setWon={ this.setWon } setCurrentStreak={ this.setCurrentStreak } setHintsUsed={ this.setHintsUsed } resetCurrentStreak={ this.resetCurrentStreak } setStatus={ this.setStatus } ppStatus={this.state.ppStatus} ></Keyboard> 
       </div>
     );
