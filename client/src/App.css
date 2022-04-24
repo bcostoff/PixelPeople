@@ -195,7 +195,7 @@ body {
 	-webkit-border-radius:2px;
   border-radius:2px;
   min-width: 80px;
-  max-width: 100px;
+  max-width: 110px;
 
   /* display: none; */
 }
@@ -230,7 +230,7 @@ body {
   transform: translate(-50%, -50%);
   z-index: 200;
 
-  /* display: none; */
+  display: none;
 }
 
 /* Mobile Only */
