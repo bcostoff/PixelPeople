@@ -3,6 +3,7 @@ import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartSimple } from '@fortawesome/free-solid-svg-icons'
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
+import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons'
 import Keyboard from './Keyboard';
 import Stats from './Stats';
 import Info from './Info';
@@ -157,8 +158,9 @@ class App extends Component {
     return (
       <div className="App">        
         <header className="App-header">
-        <span className="col-10"><FontAwesomeIcon className="info" icon={faCircleQuestion} onClick={this.handleInfoClick} /></span>
-        <span className="col-80">PIXEL PEOPLE</span>
+          <span className="col-10"><FontAwesomeIcon className="info" icon={faCircleQuestion} onClick={this.handleInfoClick} /></span>
+          <span className="col-10"><FontAwesomeIcon className="history" icon={faClockRotateLeft} onClick={this.handleInfoClick} /></span>
+        <span className="col-70">PIXEL PEOPLE</span>
         <span className="col-10"><FontAwesomeIcon className="stats" icon={faChartSimple} onClick={this.handleStatsClick} /></span>
         </header>
         <Stats show={this.state.showModal} hideModal={this.hideModal} ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed}></Stats>

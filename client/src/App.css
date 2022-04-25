@@ -78,6 +78,13 @@ body {
   font-size: 18px;
 } 
 
+.history{
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  font-size: 18px;
+}
+
 .personImg{
   position: relative;
   z-index: 100!important;
@@ -116,6 +123,10 @@ body {
 }
 .col-80{
   width:80%;
+  display:inline-block;
+}
+.col-70{
+  width:70%;
   display:inline-block;
 }
 .pt-10{
@@ -196,8 +207,7 @@ body {
   border-radius:2px;
   min-width: 80px;
   max-width: 110px;
-
-  /* display: none; */
+  display: none;
 }
 
 .help:after {
@@ -211,6 +221,10 @@ body {
   border-top: solid 6px white;
   border-left: solid 6px transparent;
   border-right: solid 6px transparent;
+}
+
+.show{
+  display:block!important;
 }
 
 .status{

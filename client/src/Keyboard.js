@@ -29,7 +29,11 @@ class Keyboard extends Component {
         if (pressedKey === 'Del') {
             this.removeLetter()
         } else if (pressedKey === 'Enter') {
-            this.checkGuess()
+            if (this.state.guessArray.length === this.state.total) {
+                this.checkGuess()
+            } else {
+                this.setState({ status: 'Incomplete' })
+            }
         } else if (pressedKey === 'Hint') {
             this.showHint()
         } else if (pressedKey === 'q' && this.state.debugEnabled) {
@@ -138,11 +142,19 @@ class Keyboard extends Component {
         if (this.state.set2) {
             contentBlock.splice(length1, 0, <div className="clearfix"></div>);
         }
+        let statusClass = '';
+        if (this.state.status !== null) {
+            statusClass = "-" + this.state.status.toLowerCase();
+        }
+        let hintClass = '';
+        if (this.state.hint !== null) {
+            hintClass = "show";
+        }
         return(
             <div id="Board">
 
-                <span className="status">{this.state.status}</span>
-                <span className="help">{this.state.hint}</span>
+                <span className={"status " + (statusClass)}>{this.state.status}</span>
+                <span className={"help " + (hintClass)}>{this.state.hint}</span>
                 <img src={'/images/characters/' + this.state.id + '.png' } className="personImg" style={{ width: "100%", height: "auto" }} alt="Pixel Person"></img>
                 
                 <div id="Answer">
