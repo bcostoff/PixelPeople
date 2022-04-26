@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import './Modal.css';
 
 class Stats extends Component {
@@ -30,32 +32,44 @@ class Stats extends Component {
         return(
             <div className={showHideClassName}>
                 <section className="modal-main">
-                    <h2>Statistics</h2>
-                    <hr></hr>
+                    <div className="modal-body">
+                    <FontAwesomeIcon className="close-btn" icon={faXmark} onClick={ this.props.hideModal } />
+                    <h2>Statistics</h2>                    
+                    <hr></hr>                    
                     <br></br>
-                    <div className='columns-center'>Played</div>
-                    <div className='columns-center'>Win%</div>                     
-                    <div className='columns-center'>{ this.props.ppPlayed }</div>
-                    <div className='columns-center'>{ Math.ceil(winPercentage) }</div>
-                    <br></br>
-                    <br></br>
+                    <div className='columns-center results'>{ this.props.ppPlayed }</div>
+                    <div className='columns-center results'>{ Math.ceil(winPercentage) }</div>
+                    <div className='columns-center results'>{ this.props.ppCurrentStreak }</div>
+                    <div className='columns-center results'>{ this.props.ppMaxStreak }</div>
+                    <div className='columns-center'>Played<br></br><br></br></div>
+                    <div className='columns-center'>Win %<br></br><br></br></div>                      
                     <div className='columns-center'>Current<br></br>Streak</div>
-                    <div className='columns-center'>Max<br></br>Streak</div>
-                    <div className='columns-center'>{ this.props.ppCurrentStreak }</div>
-                    <div className='columns-center'>{ this.props.ppMaxStreak }</div>
+                    <div className='columns-center'>Max<br></br>Streak</div>                    
                     <br></br>
                     <br></br>
                     <hr></hr>
                     <br></br>
-                    <span className='left-text'>Correct: { this.props.ppWon }</span><br></br>
-                    <span className='left-text'>Incorrect: {lost}</span><br></br>
-                    <span className='left-text'>Hints Used: { this.props.ppHintsUsed }</span><br></br>
+                    <span className='left-text'>Correct: <span className="results-sm">{ this.props.ppWon }</span></span><br></br>
+                    <span className='left-text'>Incorrect: <span className="results-sm">{lost}</span></span><br></br>
+                    <span className='left-text'>Hints Used: <span className="results-sm">{ this.props.ppHintsUsed }</span></span><br></br>
                     <div>&nbsp;</div>
-                    <div>&nbsp;</div>
-              <button type="button" className="close-btn" onClick={ this.props.hideModal }>
-                Close
-              </button>
+                    <div className="col-55">
+                        <span className="next">NEXT PIXEL PUZZLE</span>
+                        <br></br>
+                        <span className="clock">04:25:12</span>
+                    </div>
+                    <div className="col-10 vl"></div>
+                    <div className="col-35">
+                        <button type="button" className="share-btn">
+                            SHARE
+                        </button>
+                    </div>
+                    <br></br><br></br>
+                    </div>
+                    <div className="google-ads">Google Ads</div>
+                    
             </section>
+            
             </div> 
         )
     }

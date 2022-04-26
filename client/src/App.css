@@ -64,25 +64,28 @@ body {
   position: relative;
 }
 
-.info{
-  position: absolute;
-  left: 23px;
-  top: 7px;
-  font-size: 18px;
-}
-
 .stats{
   position: absolute;
-  right: 25px;
+  right: 20px;
   top: 7px;
   font-size: 18px;
+  z-index: 50;
 } 
+
+.info{
+  position: absolute;
+  left: 20px;
+  top: 7px;
+  font-size: 18px;
+  z-index: 50;
+}
 
 .history{
   position: absolute;
-  left: 10px;
+  left: 50px;
   top: 7px;
   font-size: 18px;
+  z-index: 50;
 }
 
 .personImg{
@@ -121,6 +124,23 @@ body {
   width:10%;
   display:inline-block;
 }
+.col-35{
+  width:35%;
+  display:inline-block;
+}
+.col-50{
+  width:50%;
+  display:inline-block;
+}
+.col-55{
+  width:55%;
+  display:inline-block;
+  padding-right: 10px;
+}
+.col-60{
+  width:60%;
+  display:inline-block;
+}
 .col-80{
   width:80%;
   display:inline-block;
@@ -131,6 +151,12 @@ body {
 }
 .pt-10{
   padding-top:10px!important;
+}
+
+.bdr{
+  border: 0px 1px 0px 0px;
+  border-style: solid;
+  border-color: white;
 }
 
 .pt-5{
@@ -228,24 +254,27 @@ body {
 }
 
 .status{
-  font-size:24px;
+  font-size:14px;
   text-transform: uppercase;
   font-family: 'Press Start 2P', cursive;
-  color: white;
-  background-color: black;
-  padding: 15px 17px 13px 20px;
+  color: black;
+  background-color: white;
+  padding: 16px 15px 14px 16px;
   line-height: 12px;
 	-moz-border-radius:2px;
 	-webkit-border-radius:2px;
   border-radius:2px;
   position: absolute;
-  top: 218px;
+  top: 307px;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 200;
 
+  min-width: 100px;
   /* display: none; */
 }
+
+
 
 /* Mobile Only */
 @media(max-width:991px){
