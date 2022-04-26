@@ -14,6 +14,7 @@ class Keyboard extends Component {
             set2: null,
             total: null,
             hint: null,
+            specialArray: null,
             status: null,
             nextLetter: 0,
             guessArray: [],
@@ -48,6 +49,13 @@ class Keyboard extends Component {
             return
         }
         let arr = this.state.guessArray;
+        if (this.state.specialArray !== null) {
+            let next_index = arr.length;
+            let obj = this.state.specialArray.filter(e => parseInt(e.index) === next_index)
+            if (obj.length > 0) {
+                arr.push(obj[0].char);
+            }
+        }
         arr.push(pressedKey);
         let i = this.state.nextLetter;
         i++;
@@ -109,6 +117,7 @@ class Keyboard extends Component {
                 id: data.id,
                 set1: data.set1,
                 set2: data.set2,
+                specialArray: data.specialArray,
                 total: data.set1 + data.set2
             }, () => {
                 // console.log(this.state)
@@ -122,6 +131,7 @@ class Keyboard extends Component {
                 id: data.id,
                 set1: data.set1,
                 set2: data.set2,
+                specialArray: data.specialArray,
                 total: data.set1 + data.set2
             }, () => {
                 // console.log(this.state)
@@ -136,7 +146,19 @@ class Keyboard extends Component {
         const length1 = this.state.set1;
         const t = this.state.total;
         let contentBlock = Array(t).fill().map((e, i) => { 
-            let block = <div style={{ display: "inline-block" }} className="guess-box" key={i}>{this.state.guessArray[i]}</div>
+            let filler = this.state.guessArray[i];
+            let block;
+            if (this.state.specialArray !== null) {
+                let obj = this.state.specialArray.filter(e => parseInt(e.index) === i)
+                if (obj.length > 0) {
+                    filler = obj[0].char;
+                    block = <div style={{ display: "inline-block" }} className="guess-box" key={i}>{filler}</div>
+                } else {
+                    block = <div style={{ display: "inline-block" }} className="guess-box" key={i}>{filler}</div>
+                }
+            } else {
+                block = <div style={{ display: "inline-block" }} className="guess-box" key={i}>{filler}</div>
+            }
             return block;
         })
         if (this.state.set2) {

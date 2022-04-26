@@ -51,7 +51,7 @@
     {
       "id": "9",
       "name": "deadpool",
-      "hint": "You’re still here? It’s over. Go home!",
+      "hint": "You're still here? It's over. Go home!",
       "expired": "Y"
     },
     {
@@ -70,7 +70,7 @@
       "id": "12",
       "name": "wall-e",
       "hint": "One Piece of Garbage at a Time",
-      "expired": "Y"
+      "expired": "N"
     },
     {
       "id": "13",

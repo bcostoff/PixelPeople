@@ -28,13 +28,27 @@ app.get("/person", (req, res) => {
             });
             r = obj.data.find(a => a.expired == 'N');
         }
+
+        let specialArray = [];
+        let str = r.name.replace(' ', '')
+        for(var i=0; i<str.length;i++) {
+            if (str[i] === ".") {
+                let obj = { index: i, char: "."}
+                specialArray.push(obj)  
+            }
+            if (str[i] === "-") {
+                let obj = { index: i, char: "-"}
+                specialArray.push(obj)  
+            }
+        }
+
         var setArray = r.name.split(' ');
         var set1 = setArray[0].length;
         var set2 = null;
         if (setArray.length > 1) {
             set2 = setArray[1].length;
         }
-        res.json({ id: r.id, set1: set1, set2: set2, hint: r.hint });
+        res.json({ id: r.id, set1: set1, set2: set2, hint: r.hint, specialArray: specialArray });
         
     });
     
