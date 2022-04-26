@@ -28,7 +28,7 @@ class Info extends Component {
             <div className={showHideClassName}>
                 <section className="modal-main">  
                     <div className="modal-body">
-                        <FontAwesomeIcon className="close-btn" icon={faXmark} onClick={ this.props.hideModal } />
+                        <FontAwesomeIcon className="close-btn" icon={faXmark} onClick={ this.props.hideInfoModal } />
                         <h2>How To Play</h2>
                         <hr></hr>
                         <br></br>

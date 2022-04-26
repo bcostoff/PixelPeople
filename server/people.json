@@ -28,7 +28,7 @@
       "id": "5",
       "name": "donald trump",
       "hint": "The 45th",
-      "expired": "N"
+      "expired": "Y"
     },
     {
       "id": "6",
@@ -124,7 +124,13 @@
       "id": "21",
       "name": "charizard",
       "hint": "Known in Japan as Lizardon",
-      "expired": "y"
-    }                   
+      "expired": "Y"
+    },
+    {
+      "id": "22",
+      "name": "mister rogers",
+      "hint": "hello neighbor",
+      "expired": "N"
+    }                    
   ]
 }
