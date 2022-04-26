@@ -98,6 +98,20 @@ app.get("/debug", (req, res) => {
             });
             r = obj.data.find(a => a.expired == 'N');
         }
+
+        let specialArray = [];
+        let str = r.name.replace(' ', '')
+        for(var i=0; i<str.length;i++) {
+            if (str[i] === ".") {
+                let obj = { index: i, char: "."}
+                specialArray.push(obj)  
+            }
+            if (str[i] === "-") {
+                let obj = { index: i, char: "-"}
+                specialArray.push(obj)  
+            }
+        }
+        
         var setArray = r.name.split(' ');
         var set1 = setArray[0].length;
         var set2 = null;
