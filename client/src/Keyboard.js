@@ -1,6 +1,7 @@
 import { Component } from 'react';
 // import ReactDOM from 'react-dom';
 import './App.css';
+import GiveUp from './GiveUp';
  
 class Keyboard extends Component {
     constructor(props) {
@@ -18,12 +19,15 @@ class Keyboard extends Component {
             status: null,
             nextLetter: 0,
             guessArray: [],
-            debugEnabled: true
+            debugEnabled: true,
+            showGiveUpModal: false,
         }
+        this.giveUp = this.giveUp.bind(this)
     }
+    
 
     handleKeyClick = event => {
-        if (this.props.ppStatus !== null) {
+        if (this.props.ppStatus !== 'null') {
             return;
         }
         let pressedKey = event.target.innerHTML;
@@ -33,12 +37,20 @@ class Keyboard extends Component {
             if (this.state.guessArray.length === this.state.total) {
                 this.checkGuess()
             } else {
-                this.setState({ status: 'Incomplete' })
+                this.setState({ status: 'Incomplete' }, () => {
+                    document.getElementById('status').classList.add('show')
+                })
+                setTimeout(() => {
+                    document.getElementById('status').classList.add('fade-out')
+                    setTimeout(() => this.setState({ status: null }), 1000)
+                }, 2000)
             }
         } else if (pressedKey === 'Hint') {
-            this.showHint()
+            this.handleHintClick()
         } else if (pressedKey === 'q' && this.state.debugEnabled) {
             this.myDebug()
+        } else if (pressedKey === '?') {
+            this.showGiveUpModal()
         } else {
             this.insertLetter(event.target.innerHTML)
         }
@@ -86,28 +98,39 @@ class Keyboard extends Component {
                 status: res.result
             }, () => {
                 if (this.state.status === 'Correct') {
+                    document.getElementById('status').classList.add('show')
                     this.props.setWon()
                     this.props.setCurrentStreak()
                 }
                 if (this.state.status === 'Wrong') {
+                    document.getElementById('status').classList.add('show')
                     this.props.resetCurrentStreak()
+                    this.giveUp()
                 }
                 this.props.setStatus(this.state.status)
                 this.props.setPlayed()
-                setTimeout(() => this.props.showModal(), 2000)
+                setTimeout(() => {
+                    this.props.showModal()
+                    document.getElementById('status').classList.add('fade-out')
+                    setTimeout(() => this.setState({ status: null }), 1000)
+                }, 2000)
                 // console.log(this.state)
             })) 
     }
 
-    showHint () {
+    handleHintClick() {
+        this.props.setHintsUsed()
+        this.props.setHintUsedToday()
+        this.showHint();
+    }
+
+
+    showHint() {
         fetch('/hint')
             .then(response => response.json())
             .then(data => this.setState({
                 hint: data.hint
-            }, () => {
-                this.props.setHintsUsed()
-                // console.log(this.state)
-            })) 
+            }))
     }
 
     myDebug () {
@@ -123,6 +146,54 @@ class Keyboard extends Component {
                 // console.log(this.state)
             })) 
     }
+
+    giveUp = () => {
+        fetch('/giveup')
+            .then(response => response.json())
+            .then(data => {
+                let set1 = data.set1.length;
+                let set2 = data.set2 === null ? 0 : data.set2.length;
+                let chars1 = data.set1
+                let chars2 = data.set2
+                let total = set1 + set2
+                
+                this.setState({
+                    id: data.id,
+                    set1: set1,
+                    set2: set2,
+                    total: total
+                }, () => {
+                    
+                    let tempArray = []
+                    for (var i = 0; i < chars1.length; i++) {
+                        tempArray.push(chars1[i]);
+                    }
+                    if (chars2 !== null) {
+                        for (var f = 0; f < chars2.length; f++) {
+                            tempArray.push(chars2[f]);
+                        }
+                    }
+                    this.setState({ guessArray: tempArray })
+                })
+            })
+        
+                
+    }
+
+    
+    confirmGiveUp = () => {
+        this.giveUp()
+        this.hideGiveUpModal()
+    }
+
+    hideGiveUpModal = () => {
+        this.setState({ showGiveUpModal: false });
+    };
+
+    showGiveUpModal = () => {
+        this.setState({ showGiveUpModal: true });
+    };
+    
         
     componentDidMount() {
         fetch('/person')
@@ -136,10 +207,15 @@ class Keyboard extends Component {
             }, () => {
                 // console.log(this.state)
             })) 
+           console.log(this.props.ppHintUsedToday) 
+        if (this.props.ppHintUsedToday === 'true') {
+            this.showHint()
+        }
+        
     }
    
     componentWillUnmount() {
-    
+       
     }
 
     render() {
@@ -168,15 +244,17 @@ class Keyboard extends Component {
         if (this.state.status !== null) {
             statusClass = "-" + this.state.status.toLowerCase();
         }
+        
         let hintClass = '';
         if (this.state.hint !== null) {
             hintClass = "show";
         }
         return(
             <div id="Board">
+                <GiveUp showGiveUp={this.state.showGiveUpModal} hideGiveUpModal={ this.hideGiveUpModal } confirmGiveUp={ this.confirmGiveUp }></GiveUp>
 
-                <span className={"status " + (statusClass)}>{this.state.status}</span>
-                <span className={"help " + (hintClass)}>{this.state.hint}</span>
+                <span id="status" className={"status " + (statusClass)}>{this.state.status}</span>
+                <span id="help" className={"help " + (hintClass)}>{this.state.hint}</span>
                 <img src={'/images/characters/' + this.state.id + '.png' } className="personImg" style={{ width: "100%", height: "auto" }} alt="Pixel Person"></img>
                 
                 <div id="Answer">

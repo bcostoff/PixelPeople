@@ -54,6 +54,37 @@ app.get("/person", (req, res) => {
     
 }); 
 
+
+app.get("/giveup", (req, res) => {
+    var obj;
+    fs.readFile(__dirname + '/people.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        obj = JSON.parse(data);
+        let r = obj.data.find(a => a.expired == 'N');
+        if (typeof r == "undefined") {
+            let fileName = __dirname + '/people.json';
+            for (var i = 0; i < obj.data.length; i++) {
+                obj.data[i].expired = 'N';
+            }
+            fs.writeFile(fileName, JSON.stringify(obj, null, 2), function writeJSON(err) {
+                if (err) return console.log(err);
+            });
+            r = obj.data.find(a => a.expired == 'N');
+        }
+
+        var setArray = r.name.split(' ');
+        var set1 = setArray[0];
+        var set2 = null;
+        if (setArray.length > 1) {
+            set2 = setArray[1];
+        }
+        res.json({ id: r.id, set1: set1, set2: set2 });
+        
+    });
+    
+}); 
+
+
 app.get("/hint", (req, res) => {
     var obj;
     fs.readFile(__dirname + '/people.json', 'utf8', function (err, data) {
@@ -111,7 +142,7 @@ app.get("/debug", (req, res) => {
                 specialArray.push(obj)  
             }
         }
-        
+
         var setArray = r.name.split(' ');
         var set1 = setArray[0].length;
         var set2 = null;

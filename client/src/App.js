@@ -20,7 +20,8 @@ class App extends Component {
       ppMaxStreak: 0,
       ppHintsUsed: 0,
       ppDate: null,
-      ppStatus: null
+      ppStatus: null,
+      ppHintUsedToday: false
     };
     // this.showModal = this.showModal.bind(this);
     // this.hideModal = this.hideModal.bind(this);
@@ -28,63 +29,107 @@ class App extends Component {
     // localStorage.removeItem('myCat');
 
     if("ppStatus" in localStorage){
-      this.ppStatus = localStorage.getItem('ppStatus')
+      this.state.ppStatus = localStorage.getItem('ppStatus')
     }else{
       localStorage.setItem('ppStatus', null)
     }
 
     if("ppPlayed" in localStorage){
-      this.ppPlayed = localStorage.getItem('ppPlayed')
+      this.state.ppPlayed = localStorage.getItem('ppPlayed')
     }else{
       localStorage.setItem('ppPlayed', '')
     }
 
     if("ppWon" in localStorage){
-      this.ppWon = localStorage.getItem('ppWon')
+      this.state.ppWon = localStorage.getItem('ppWon')
     }else{
       localStorage.setItem('ppWon', '')
     }
 
     if("ppCurrentStreak" in localStorage){
-      this.ppCurrentStreak = localStorage.getItem('ppCurrentStreak')
+      this.state.ppCurrentStreak = localStorage.getItem('ppCurrentStreak')
     }else{
       localStorage.setItem('ppCurrentStreak', '')
     }
 
     if("ppMaxStreak" in localStorage){
-      this.ppMaxStreak = localStorage.getItem('ppMaxStreak')
+      this.state.ppMaxStreak = localStorage.getItem('ppMaxStreak')
     }else{
       localStorage.setItem('ppMaxStreak', '')
     }
 
     if("ppHintsUsed" in localStorage){
-      this.ppHintsUsed = localStorage.getItem('ppHintsUsed')
+      this.state.ppHintsUsed = localStorage.getItem('ppHintsUsed')
     }else{
       localStorage.setItem('ppHintsUsed', '')
     }
+
+    
+
+    if ("ppDate" in localStorage) {
+      this.state.ppDate = localStorage.getItem('ppDate')
+    } else {
+      let today = new Date();
+      let dd = today.getDate();
+      let mm = today.getMonth()+1; 
+      let yyyy = today.getFullYear();
+      let curDate = mm + '-' + dd + '-' + yyyy
+      localStorage.setItem('ppDate', curDate)
+    }
+
+        
+
+    if ("ppHintUsedToday" in localStorage) {
+      let today = new Date();
+      let dd = today.getDate();
+      let mm = today.getMonth()+1; 
+      let yyyy = today.getFullYear();
+      let curDate = mm + '-' + dd + '-' + yyyy
+      if (localStorage.getItem('ppDate') === curDate) {
+        this.state.ppHintUsedToday = localStorage.getItem('ppHintUsedToday')
+      } else {
+        localStorage.setItem('ppHintUsedToday', false)
+      }
+    }else{
+      localStorage.setItem('ppHintUsedToday', false)
+    } 
     
   }
 
   componentDidMount() {
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth()+1; 
-    let yyyy = today.getFullYear();
-    let curDate = mm + '-' + dd + '-' + yyyy
 
-    if("ppDate" in localStorage){
-      this.setState({
-        ppDate: localStorage.getItem('ppDate')
-      }, () => {
-        if (this.state.ppDate !== curDate) {
-          localStorage.setItem('ppDate', curDate)
-          localStorage.setItem('ppStatus', null)
-          window.location.reload()
-        }
-      })
-    }else{
-      localStorage.setItem('ppDate', curDate)
-    }
+    // let today = new Date();
+    // let dd = today.getDate();
+    // let mm = today.getMonth()+1; 
+    // let yyyy = today.getFullYear();
+    // let curDate = mm + '-' + dd + '-' + yyyy
+
+    // if("ppDate" in localStorage){
+    //   this.setState({
+    //     ppDate: localStorage.getItem('ppDate')
+    //   }, () => {
+    //     if (this.state.ppDate !== curDate) {
+    //       localStorage.setItem('ppDate', curDate)
+    //       localStorage.setItem('ppStatus', null)
+    //       window.location.reload()
+    //     }
+
+    //     if ("ppHintUsedToday" in localStorage) {
+    //       if (localStorage.getItem('ppDate') === curDate) {
+    //         this.setState({
+    //           ppHintUsedToday: localStorage.getItem('ppHintUsedToday')
+    //         })
+    //       } else {
+    //         localStorage.setItem('ppHintUsedToday', false)
+    //       }
+    //     }else{
+    //       localStorage.setItem('ppHintUsedToday', false)
+    //     }
+    //   })
+    // }else{
+    //   localStorage.setItem('ppDate', curDate)
+    // }
+    
   }
 
   setStatus = (status) => {
@@ -130,6 +175,11 @@ class App extends Component {
     this.setState({ ppHintsUsed: hintsUsed });
   };
 
+  setHintUsedToday = () => {
+    localStorage.setItem('ppHintUsedToday', true)
+    this.setState({ ppHintUsedToday: true });
+  };
+
   showModal = () => {
     this.setState({ showModal: true });
   };
@@ -167,7 +217,17 @@ class App extends Component {
         </header>
         <Stats show={this.state.showModal} hideModal={this.hideModal} ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed}></Stats>
         <Info showInfo={this.state.showInfoModal} hideInfoModal={ this.hideInfoModal }></Info>
-        <Keyboard showModal={ this.showModal } setPlayed={ this.setPlayed } setWon={ this.setWon } setCurrentStreak={ this.setCurrentStreak } setHintsUsed={ this.setHintsUsed } resetCurrentStreak={ this.resetCurrentStreak } setStatus={ this.setStatus } ppStatus={this.state.ppStatus} ></Keyboard> 
+        <Keyboard
+          showModal={this.showModal}
+          setPlayed={this.setPlayed}
+          setWon={this.setWon}
+          setCurrentStreak={this.setCurrentStreak}
+          setHintsUsed={this.setHintsUsed}
+          ppHintUsedToday={this.state.ppHintUsedToday}
+          setHintUsedToday={this.setHintUsedToday}
+          resetCurrentStreak={this.resetCurrentStreak}
+          setStatus={this.setStatus}
+          ppStatus={this.state.ppStatus} ></Keyboard> 
       </div>
     );
   }

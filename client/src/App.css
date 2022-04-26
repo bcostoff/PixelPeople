@@ -249,6 +249,11 @@ body {
   border-right: solid 6px transparent;
 }
 
+.fade-out{
+  opacity:0;
+  transition: opacity 1s ease;
+}
+
 .show{
   display:block!important;
 }
@@ -269,9 +274,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 200;
-
   min-width: 100px;
-  /* display: none; */
+  display: none;
 }
 
 
