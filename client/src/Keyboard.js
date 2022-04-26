@@ -207,7 +207,7 @@ class Keyboard extends Component {
             }, () => {
                 // console.log(this.state)
             })) 
-           console.log(this.props.ppHintUsedToday) 
+        //    console.log(this.props.ppHintUsedToday) 
         if (this.props.ppHintUsedToday === 'true') {
             this.showHint()
         }
