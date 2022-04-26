@@ -19,7 +19,7 @@ class Keyboard extends Component {
             status: null,
             nextLetter: 0,
             guessArray: [],
-            debugEnabled: true,
+            debugEnabled: false,
             showGiveUpModal: false,
         }
         this.giveUp = this.giveUp.bind(this)
