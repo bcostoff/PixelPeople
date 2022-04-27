@@ -22,17 +22,29 @@ class App extends Component {
       ppHintsUsed: 0,
       ppDate: null,
       ppStatus: null,
-      ppHintUsedToday: false
+      ppHintUsedToday: false,
+      rows: 16,
+      cols: 16,
+      mapsize: 16 * 16,
+      tilesize: 32,
+      colorArray: [],
+      doAnim: true
     };
+    
     // this.showModal = this.showModal.bind(this);
     // this.hideModal = this.hideModal.bind(this);
     // localStorage.setItem('myCat', 'Tom');
     // localStorage.removeItem('myCat');
+
     let today = new Date();
     let dd = today.getDate();
     let mm = today.getMonth()+1; 
     let yyyy = today.getFullYear();
     let curDate = mm + '-' + dd + '-' + yyyy
+    
+    for (var i = 0; i < this.state.mapsize; i++){
+        this.state.colorArray.push(`rgba(81,214,255,1)`)
+    }
 
     if("ppStatus" in localStorage){
       this.state.ppStatus = localStorage.getItem('ppStatus')
@@ -93,39 +105,53 @@ class App extends Component {
     
   }
 
+  
+  fillRect = (ctx,x,y,w,h,c) => {
+    ctx.fillStyle = c
+    ctx.fillRect(x,y,w,h)
+  }
+
+  draw = (ctx, frameCount) => {
+    if (!this.state.doAnim){ctx=null; return;}
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+    this.fragmental()
+    this.fragmental()
+    this.fragmental()
+    this.drawBricks(ctx)
+  }
+
+  fragmental = () => {
+    let found = this.state.colorArray.find(element => element === `rgba(81,214,255,1)`)
+    if (found) {
+      let index = Math.floor(Math.random() * this.state.colorArray.length)
+      if (this.state.colorArray[index] === `rgba(81,214,255,1)`) {
+        const myNewArray = Object.assign([...this.state.colorArray], {
+            [index]: `rgba(81,214,255,0)`
+        });
+        this.setState({ colorArray: myNewArray });
+        // this.state.colorArray[index] = `rgba(81,214,255,0)`
+      } else {
+        this.fragmental()
+      }
+    } else {
+      this.setState({
+        doAnim: false
+      })
+      return
+    }
+  }
+
+  drawBricks = (ctx) => {
+    let count = 0
+    for (var r = 0; r < this.state.rows; r++){
+      for (var c = 0; c < this.state.cols; c++){
+        this.fillRect(ctx,this.state.tilesize * c, this.state.tilesize * r, this.state.tilesize, this.state.tilesize, this.state.colorArray[count])
+        count++;
+      }
+    }
+  }
+
   componentDidMount() {
-
-    // let today = new Date();
-    // let dd = today.getDate();
-    // let mm = today.getMonth()+1; 
-    // let yyyy = today.getFullYear();
-    // let curDate = mm + '-' + dd + '-' + yyyy
-
-    // if("ppDate" in localStorage){
-    //   this.setState({
-    //     ppDate: localStorage.getItem('ppDate')
-    //   }, () => {
-    //     if (this.state.ppDate !== curDate) {
-    //       localStorage.setItem('ppDate', curDate)
-    //       localStorage.setItem('ppStatus', null)
-    //       window.location.reload()
-    //     }
-
-    //     if ("ppHintUsedToday" in localStorage) {
-    //       if (localStorage.getItem('ppDate') === curDate) {
-    //         this.setState({
-    //           ppHintUsedToday: localStorage.getItem('ppHintUsedToday')
-    //         })
-    //       } else {
-    //         localStorage.setItem('ppHintUsedToday', false)
-    //       }
-    //     }else{
-    //       localStorage.setItem('ppHintUsedToday', false)
-    //     }
-    //   })
-    // }else{
-    //   localStorage.setItem('ppDate', curDate)
-    // }
     
   }
 
@@ -214,7 +240,7 @@ class App extends Component {
         </header>
         <Stats show={this.state.showModal} hideModal={this.hideModal} ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed}></Stats>
         <Info showInfo={this.state.showInfoModal} hideInfoModal={this.hideInfoModal}></Info>
-        {/* <Canvas /> */}
+        <Canvas draw={this.draw} />
         <Keyboard
           showModal={this.showModal}
           setPlayed={this.setPlayed}

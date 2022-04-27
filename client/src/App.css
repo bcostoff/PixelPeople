@@ -64,6 +64,13 @@ body {
   position: relative;
 }
 
+canvas{
+  position:absolute;
+  top:200px;
+  left:60px;
+  z-index: 1000;
+}
+
 .stats{
   position: absolute;
   right: 20px;
