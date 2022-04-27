@@ -1,1 +1,5 @@
+Dev Repository
 https://github.com/bcostoff/PixelPeople.git
+
+Prod Repository
+https://git.heroku.com/pixel-people.git
