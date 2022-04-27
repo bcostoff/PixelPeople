@@ -23,14 +23,14 @@ class App extends Component {
       ppDate: null,
       ppStatus: null,
       ppHintUsedToday: false,
-      rows: 16,
-      cols: 16,
-      mapsize: 16 * 16,
+      rows: 8,
+      cols: 8,
+      mapsize: 8 * 8,
       tilesize: 32,
       colorArray: [],
       doAnim: true
     };
-    
+
     // this.showModal = this.showModal.bind(this);
     // this.hideModal = this.hideModal.bind(this);
     // localStorage.setItem('myCat', 'Tom');
