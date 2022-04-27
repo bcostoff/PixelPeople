@@ -29,10 +29,12 @@ class GiveUp extends Component {
                 <section className="modal-main">  
                     <div className="modal-body">
                         <FontAwesomeIcon className="close-btn" icon={faXmark} onClick={ this.props.hideGiveUpModal } />
-                        <h2>Are You Sure You Want To Give Up?</h2>
+                        <h2>HELP!</h2>
                         <hr></hr>
                         <br></br>
-                        <button className="coffee-btn" onClick={ this.props.confirmGiveUp }>Give Up!</button>
+                        <p>Are You Sure?</p>
+                        <br></br>
+                        <button className="coffee-btn" onClick={ this.props.confirmGiveUp }>Yes, I Give Up!</button>
                         <br></br>
                     </div>
                     <div className="google-ads">Google Ads</div>

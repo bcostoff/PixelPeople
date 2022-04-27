@@ -70,7 +70,7 @@
       "id": "12",
       "name": "wall-e",
       "hint": "One Piece of Garbage at a Time",
-      "expired": "N"
+      "expired": "Y"
     },
     {
       "id": "13",
@@ -131,6 +131,30 @@
       "name": "mister rogers",
       "hint": "hello neighbor",
       "expired": "Y"
+    },
+    {
+      "id": "23",
+      "name": "goonies",
+      "hint": "hey you guys!",
+      "expired": "Y"
+    },
+    {
+      "id": "24",
+      "name": "jake the_snake",
+      "hint": "DDT",
+      "expired": "N"
+    },
+    {
+      "id": "25",
+      "name": "marty mcfly",
+      "hint": "Wait a minute doc",
+      "expired": "N"
+    },
+    {
+      "id": "26",
+      "name": "prince",
+      "hint": "Turned himself into a symbol",
+      "expired": "N"
     }
   ]
 }
