@@ -19,7 +19,7 @@ class Keyboard extends Component {
             status: null,
             nextLetter: 0,
             guessArray: [],
-            debugEnabled: false,
+            debugEnabled: true,
             showGiveUpModal: false,
         }
         this.giveUp = this.giveUp.bind(this)
@@ -28,7 +28,10 @@ class Keyboard extends Component {
 
     handleKeyClick = event => {
         if (this.props.ppStatus !== 'null') {
-            return;
+            if (!this.state.debugEnabled) {
+                this.giveUp()
+                return
+            }
         }
         let pressedKey = event.target.innerHTML;
         if (pressedKey === 'Del') {

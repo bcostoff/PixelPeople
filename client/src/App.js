@@ -27,6 +27,11 @@ class App extends Component {
     // this.hideModal = this.hideModal.bind(this);
     // localStorage.setItem('myCat', 'Tom');
     // localStorage.removeItem('myCat');
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1; 
+    let yyyy = today.getFullYear();
+    let curDate = mm + '-' + dd + '-' + yyyy
 
     if("ppStatus" in localStorage){
       this.state.ppStatus = localStorage.getItem('ppStatus')
@@ -64,27 +69,18 @@ class App extends Component {
       localStorage.setItem('ppHintsUsed', '')
     }
 
-    
-
     if ("ppDate" in localStorage) {
       this.state.ppDate = localStorage.getItem('ppDate')
+      if (this.state.ppDate !== curDate) {
+        localStorage.setItem('ppDate', curDate)
+        localStorage.setItem('ppStatus', null)
+        window.location.reload()
+      }
     } else {
-      let today = new Date();
-      let dd = today.getDate();
-      let mm = today.getMonth()+1; 
-      let yyyy = today.getFullYear();
-      let curDate = mm + '-' + dd + '-' + yyyy
       localStorage.setItem('ppDate', curDate)
     }
 
-        
-
     if ("ppHintUsedToday" in localStorage) {
-      let today = new Date();
-      let dd = today.getDate();
-      let mm = today.getMonth()+1; 
-      let yyyy = today.getFullYear();
-      let curDate = mm + '-' + dd + '-' + yyyy
       if (localStorage.getItem('ppDate') === curDate) {
         this.state.ppHintUsedToday = localStorage.getItem('ppHintUsedToday')
       } else {
