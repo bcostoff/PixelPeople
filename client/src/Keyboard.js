@@ -34,6 +34,7 @@ class Keyboard extends Component {
             }
         }
         let pressedKey = event.target.innerHTML;
+
         if (pressedKey === 'Del') {
             this.removeLetter()
         } else if (pressedKey === 'Enter') {
@@ -50,8 +51,6 @@ class Keyboard extends Component {
             }
         } else if (pressedKey === 'Hint') {
             this.handleHintClick()
-        } else if (pressedKey === 'q' && this.state.debugEnabled) {
-            this.myDebug()
         } else if (pressedKey === '?') {
             this.showGiveUpModal()
         } else {

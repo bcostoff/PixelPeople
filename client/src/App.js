@@ -1,12 +1,13 @@
-import React, { Component } from "react";
-import './App.css';
+import React, { Component } from "react"
+import './App.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartSimple } from '@fortawesome/free-solid-svg-icons'
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
 import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons'
-import Keyboard from './Keyboard';
-import Stats from './Stats';
-import Info from './Info';
+import Keyboard from './Keyboard'
+import Stats from './Stats'
+import Info from './Info'
+import Canvas from './Canvas'
 
 class App extends Component {
   constructor() {
@@ -212,7 +213,8 @@ class App extends Component {
         <span className="col-10"><FontAwesomeIcon className="stats" icon={faChartSimple} onClick={this.handleStatsClick} /></span>
         </header>
         <Stats show={this.state.showModal} hideModal={this.hideModal} ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed}></Stats>
-        <Info showInfo={this.state.showInfoModal} hideInfoModal={ this.hideInfoModal }></Info>
+        <Info showInfo={this.state.showInfoModal} hideInfoModal={this.hideInfoModal}></Info>
+        {/* <Canvas /> */}
         <Keyboard
           showModal={this.showModal}
           setPlayed={this.setPlayed}
