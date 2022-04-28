@@ -7,14 +7,17 @@ import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons'
 import Keyboard from './Keyboard'
 import Stats from './Stats'
 import Info from './Info'
+import History from './History'
 import Canvas from './Canvas'
 
 class App extends Component {
   constructor() {
     super();
+    this.myRef = React.createRef()
     this.state = {
       showModal: false,
       showInfoModal: false,
+      showHistoryModal: false,
       ppPlayed: 0,
       ppWon: 0,
       ppCurrentStreak: 0,
@@ -29,7 +32,8 @@ class App extends Component {
       tilesize: 8,
       colorArray: [],
       tempArray: [],
-      doAnim: true
+      doAnim: true,
+      debugEnabled: true
     };
 
     // this.showModal = this.showModal.bind(this);
@@ -153,6 +157,10 @@ class App extends Component {
     
   }
 
+  setShowNext = () => {
+    this.setState({ showNext: false });
+  };
+
   setStatus = (status) => {
     localStorage.setItem('ppStatus', status)
     this.setState({ ppStatus: status });
@@ -190,10 +198,12 @@ class App extends Component {
   };
 
   setHintsUsed = () => {
-    let hintsUsed = this.state.ppHintsUsed
-    hintsUsed++;
-    localStorage.setItem('ppHintsUsed', hintsUsed)
-    this.setState({ ppHintsUsed: hintsUsed });
+    if (!this.state.ppHintUsedToday) {
+      let hintsUsed = this.state.ppHintsUsed
+      hintsUsed++;
+      localStorage.setItem('ppHintsUsed', hintsUsed)
+      this.setState({ ppHintsUsed: hintsUsed });
+    }
   };
 
   setHintUsedToday = () => {
@@ -206,6 +216,10 @@ class App extends Component {
   };
 
   hideModal = () => {
+    if (this.state.debugEnabled) {
+      this.myRef.current.myDebug()
+      this.setState({ showModal: false });
+    }
     this.setState({ showModal: false });
   };
 
@@ -217,20 +231,25 @@ class App extends Component {
     this.showInfoModal();
   }
 
-  handleHistoryClick = event => {
-    fetch('/history')
-            .then(response => response.json())
-            .then(data => console.log(data)) 
-    
-  }
-
-
   hideInfoModal = () => {
     this.setState({ showInfoModal: false });
   };
 
   showInfoModal = () => {
     this.setState({ showInfoModal: true });
+  };
+
+
+  handleHistoryClick = event => {
+    this.showHistoryModal();
+  }
+
+  hideHistoryModal = () => {
+    this.setState({ showHistoryModal: false });
+  };
+
+  showHistoryModal = () => {
+    this.setState({ showHistoryModal: true });
   };
 
   render() {
@@ -246,8 +265,11 @@ class App extends Component {
         </header>
         <Stats show={this.state.showModal} hideModal={this.hideModal} ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed}></Stats>
         <Info showInfo={this.state.showInfoModal} hideInfoModal={this.hideInfoModal}></Info>
+        <History showHistory={this.state.showHistoryModal} hideHistoryModal={this.hideHistoryModal}></History>
         <Canvas draw={this.draw} />
         <Keyboard
+          ref={this.myRef}
+          debugEnabled={this.state.debugEnabled}
           showModal={this.showModal}
           setPlayed={this.setPlayed}
           setWon={this.setWon}

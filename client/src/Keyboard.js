@@ -19,7 +19,6 @@ class Keyboard extends Component {
             status: null,
             nextLetter: 0,
             guessArray: [],
-            debugEnabled: true,
             showGiveUpModal: false,
         }
         this.giveUp = this.giveUp.bind(this)
@@ -28,7 +27,7 @@ class Keyboard extends Component {
 
     handleKeyClick = event => {
         if (this.props.ppStatus !== 'null') {
-            if (!this.state.debugEnabled) {
+            if (!this.props.debugEnabled) {
                 this.giveUp()
                 return
             }
@@ -121,8 +120,10 @@ class Keyboard extends Component {
     }
 
     handleHintClick() {
-        this.props.setHintsUsed()
-        this.props.setHintUsedToday()
+        if (!this.props.debugEnabled) {
+            this.props.setHintUsedToday()
+            this.props.setHintsUsed()
+        }
         this.showHint();
     }
 
@@ -145,7 +146,8 @@ class Keyboard extends Component {
                 specialArray: data.specialArray,
                 total: data.set1 + data.set2
             }, () => {
-                // console.log(this.state)
+                window.location.reload()
+                // console.log('check server for issue')
             })) 
     }
 
@@ -244,7 +246,7 @@ class Keyboard extends Component {
             return block;
         })
         if (this.state.set2) {
-            contentBlock.splice(length1, 0, <div className="clearfix"></div>);
+            contentBlock.splice(length1, 0, <div className="clearfix" key={'space'}></div>);
         }
         let statusClass = '';
         if (this.state.status !== null) {

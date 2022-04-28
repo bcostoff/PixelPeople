@@ -178,7 +178,7 @@ app.get("/debug", (req, res) => {
         if (setArray.length > 1) {
             set2 = setArray[1].length;
         }
-        res.json({ id: r.id, set1: set1, set2: set2, hint: r.hint });
+        res.json({ id: r.id, set1: set1, set2: set2, hint: r.hint, specialArray: specialArray });
     });
 });
 

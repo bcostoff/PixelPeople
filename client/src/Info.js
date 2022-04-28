@@ -36,7 +36,7 @@ class Info extends Component {
                         <br></br><br></br>
                         Use <u><b>ALL</b></u> of the spaces below the<br></br>PIXEL PERSON to guess who/what it is.
                         <br></br><br></br>
-                        PIXEL PEOPLE can be real or fictional or charaters or titles from a movies, bands, tv shows.
+                        PIXEL PEOPLE can be real or fictional or charaters or titles from movies, bands, tv shows.
                         </p>
                         <div>&nbsp;</div>
                         <hr></hr>
