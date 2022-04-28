@@ -70,9 +70,12 @@ body {
 
 canvas{
   position:absolute;
-  top:200px;
-  left:60px;
+  height:320px;
+  top:70px;
+  left:40px;
   z-index: 1000;
+  width:80%;
+  /* background-color: black; */
 }
 
 .stats{

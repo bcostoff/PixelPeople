@@ -23,11 +23,12 @@ class App extends Component {
       ppDate: null,
       ppStatus: null,
       ppHintUsedToday: false,
-      rows: 8,
-      cols: 8,
-      mapsize: 8 * 8,
-      tilesize: 32,
+      rows: 64,
+      cols: 64,
+      mapsize: 64 * 64,
+      tilesize: 8,
       colorArray: [],
+      tempArray: [],
       doAnim: true
     };
 
@@ -43,7 +44,8 @@ class App extends Component {
     let curDate = mm + '-' + dd + '-' + yyyy
     
     for (var i = 0; i < this.state.mapsize; i++){
-        this.state.colorArray.push(`rgba(81,214,255,1)`)
+      this.state.colorArray.push(`rgba(81,214,255,1)`)
+      this.state.tempArray.push(i)
     }
 
     if("ppStatus" in localStorage){
@@ -115,29 +117,25 @@ class App extends Component {
     if (!this.state.doAnim){ctx=null; return;}
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     this.fragmental()
-    this.fragmental()
-    this.fragmental()
     this.drawBricks(ctx)
   }
 
   fragmental = () => {
-    let found = this.state.colorArray.find(element => element === `rgba(81,214,255,1)`)
-    if (found) {
-      let index = Math.floor(Math.random() * this.state.colorArray.length)
-      if (this.state.colorArray[index] === `rgba(81,214,255,1)`) {
-        const myNewArray = Object.assign([...this.state.colorArray], {
-            [index]: `rgba(81,214,255,0)`
-        });
-        this.setState({ colorArray: myNewArray });
-        // this.state.colorArray[index] = `rgba(81,214,255,0)`
-      } else {
-        this.fragmental()
-      }
-    } else {
+    if (this.state.tempArray.length < 1) {
       this.setState({
         doAnim: false
       })
       return
+    } else {
+      for (var j = 0; j < 64; j++){
+        let index = Math.floor(Math.random() * this.state.tempArray.length)
+        // const myNewColorArray = Object.assign([...this.state.colorArray], {
+        //         [index]: `rgba(81,214,255,0)`
+        //     });
+        // this.setState({ colorArray: myNewColorArray });
+        this.state.colorArray[this.state.tempArray[index]] = `rgba(81,214,255,0)`
+        this.state.tempArray.splice(index,1)
+      }
     }
   }
 
