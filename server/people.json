@@ -196,7 +196,7 @@
       "id": "33",
       "name": "wayne's world",
       "hint": "Shwing!",
-      "expired": "N"
+      "expired": "Y"
     },
     {
       "id": "34",
@@ -208,6 +208,24 @@
       "id": "35",
       "name": "louis_ck",
       "hint": "I do love standup",
+      "expired": "Y"
+    },
+    {
+      "id": "36",
+      "name": "ray",
+      "hint": "who you gonna call?",
+      "expired": "Y"
+    },
+    {
+      "id": "37",
+      "name": "the rock",
+      "hint": "People's Champ!",
+      "expired": "Y"
+    },
+    {
+      "id": "38",
+      "name": "john snow",
+      "hint": "winter is coming",
       "expired": "Y"
     }
   ]
