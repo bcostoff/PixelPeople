@@ -40,6 +40,10 @@ app.get("/person", (req, res) => {
                 let obj = { index: i, char: "-"}
                 specialArray.push(obj)  
             }
+            if (str[i] === "_") {
+                let obj = { index: i, char: "_"}
+                specialArray.push(obj)  
+            }
         }
 
         var setArray = r.name.split(' ');
@@ -52,6 +56,27 @@ app.get("/person", (req, res) => {
         
     });
     
+}); 
+
+
+app.get("/history", (req, res) => {
+    var obj;
+    var arr = []
+    fs.readFile(__dirname + '/people.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        obj = JSON.parse(data);
+        var r = obj.data.filter((a) => a.expired == 'Y')
+        if (typeof req == "undefined") {
+            arr = []
+            return
+        } else {
+            r.forEach(element => {
+                arr.push(element.id)
+            });
+        }
+        // console.log(arr)
+        res.json({ arr: arr });
+    });
 }); 
 
 
@@ -139,6 +164,10 @@ app.get("/debug", (req, res) => {
             }
             if (str[i] === "-") {
                 let obj = { index: i, char: "-"}
+                specialArray.push(obj)  
+            }
+            if (str[i] === "_") {
+                let obj = { index: i, char: "_"}
                 specialArray.push(obj)  
             }
         }

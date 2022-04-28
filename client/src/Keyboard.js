@@ -230,7 +230,11 @@ class Keyboard extends Component {
                 let obj = this.state.specialArray.filter(e => parseInt(e.index) === i)
                 if (obj.length > 0) {
                     filler = obj[0].char;
-                    block = <div style={{ display: "inline-block" }} className="guess-box" key={i}>{filler}</div>
+                    let invisible = ''
+                    if (filler === '_') {
+                        invisible = ' -invisible'
+                    }
+                    block = <div style={{ display: "inline-block" }} className={"guess-box" + invisible} key={i}>{filler}</div>
                 } else {
                     block = <div style={{ display: "inline-block" }} className="guess-box" key={i}>{filler}</div>
                 }
