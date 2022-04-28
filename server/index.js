@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express');
 var mysql = require('mysql');
 var fs = require('fs');
+const { Console } = require('console');
 
 const PORT = process.env.PORT || 3001;
 
@@ -38,6 +39,10 @@ app.get("/person", (req, res) => {
             }
             if (str[i] === "-") {
                 let obj = { index: i, char: "-"}
+                specialArray.push(obj)  
+            }
+            if (str[i] === "'") {
+                let obj = { index: i, char: "'"}
                 specialArray.push(obj)  
             }
             if (str[i] === "_") {
@@ -116,7 +121,11 @@ app.get("/hint", (req, res) => {
     if (err) throw err;
         obj = JSON.parse(data);
         let r = obj.data.find(a => a.expired == 'N');
-        res.json({ hint: r.hint });
+        if (typeof r == "undefined") {
+            res.json({ hint: '' });
+        } else {
+            res.json({ hint: r.hint });
+        }
     });
     
 });
@@ -137,6 +146,7 @@ app.get("/debug", (req, res) => {
         }
         fs.writeFile(fileName, JSON.stringify(obj, null, 2), function writeJSON(err) {
             if (err) return console.log(err);
+            // console.log('finished')
         });
     });
 
@@ -164,6 +174,10 @@ app.get("/debug", (req, res) => {
             }
             if (str[i] === "-") {
                 let obj = { index: i, char: "-"}
+                specialArray.push(obj)  
+            }
+            if (str[i] === "'") {
+                let obj = { index: i, char: "'"}
                 specialArray.push(obj)  
             }
             if (str[i] === "_") {
