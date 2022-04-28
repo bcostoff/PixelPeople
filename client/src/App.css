@@ -142,6 +142,10 @@ canvas{
   width:10%;
   display:inline-block;
 }
+.col-30{
+  width:30%;
+  display:inline-block;
+}
 .col-35{
   width:35%;
   display:inline-block;

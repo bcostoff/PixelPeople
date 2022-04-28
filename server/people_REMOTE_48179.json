@@ -88,7 +88,7 @@
       "id": "15",
       "name": "vanilla ice",
       "hint": "Alright Stop, Collaborate and Listen",
-      "expired": "Y"
+      "expired": "N"
     },
     {
       "id": "16",
@@ -154,7 +154,7 @@
       "id": "26",
       "name": "prince",
       "hint": "Turned himself into a symbol",
-      "expired": "Y"
+      "expired": "N"
     }
   ]
 }
