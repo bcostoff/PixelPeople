@@ -217,6 +217,14 @@ class App extends Component {
     this.showInfoModal();
   }
 
+  handleHistoryClick = event => {
+    fetch('/history')
+            .then(response => response.json())
+            .then(data => console.log(data)) 
+    
+  }
+
+
   hideInfoModal = () => {
     this.setState({ showInfoModal: false });
   };
@@ -231,7 +239,7 @@ class App extends Component {
         <header className="App-header">
         <span className="col-10">
           <FontAwesomeIcon className="info" icon={faCircleQuestion} onClick={this.handleInfoClick} />
-          <FontAwesomeIcon className="history" icon={faUserAstronaut} onClick={this.handleInfoClick} />
+          <FontAwesomeIcon className="history" icon={faUserAstronaut} onClick={this.handleHistoryClick} />
         </span>         
         <span className="col-80">PIXEL PEOPLE</span>
         <span className="col-10"><FontAwesomeIcon className="stats" icon={faChartSimple} onClick={this.handleStatsClick} /></span>

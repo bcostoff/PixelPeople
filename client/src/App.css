@@ -78,6 +78,10 @@ canvas{
   /* background-color: black; */
 }
 
+.-invisible{
+  opacity:0;
+}
+
 .stats{
   position: absolute;
   right: 20px;
