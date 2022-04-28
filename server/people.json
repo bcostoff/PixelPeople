@@ -155,6 +155,60 @@
       "name": "prince",
       "hint": "Turned himself into a symbol",
       "expired": "Y"
+    },
+    {
+      "id": "27",
+      "name": "teen wolf",
+      "hint": "Oh Ya, Like chase cars, and bite the mailman?",
+      "expired": "Y"
+    },
+    {
+      "id": "28",
+      "name": "ewoks",
+      "hint": "Ee chee wa maa!",
+      "expired": "Y"
+    },
+    {
+      "id": "29",
+      "name": "terminator",
+      "hint": "I'll Be Back!",
+      "expired": "Y"
+    },
+    {
+      "id": "30",
+      "name": "donnie darko",
+      "hint": "2001 film about a troubled teenager",
+      "expired": "Y"
+    },
+    {
+      "id": "31",
+      "name": "macho man",
+      "hint": "Ooh, yeah!",
+      "expired": "Y"
+    },
+    {
+      "id": "32",
+      "name": "the joker",
+      "hint": "Why So Serious?",
+      "expired": "Y"
+    },
+    {
+      "id": "33",
+      "name": "wayne's world",
+      "hint": "Shwing!",
+      "expired": "N"
+    },
+    {
+      "id": "34",
+      "name": "eleven",
+      "hint": "Don't talk to strangers",
+      "expired": "Y"
+    },
+    {
+      "id": "35",
+      "name": "louis_ck",
+      "hint": "I do love standup",
+      "expired": "Y"
     }
   ]
 }
