@@ -234,7 +234,7 @@ canvas{
   font-family: 'Press Start 2P', cursive;
   color: black;
   font-size:10px;
-  z-index: 220;
+  z-index: 1001;
   position: absolute;
   top: 80px;
   right: 15px;

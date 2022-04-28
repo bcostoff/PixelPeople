@@ -88,7 +88,7 @@
       "id": "15",
       "name": "vanilla ice",
       "hint": "Alright Stop, Collaborate and Listen",
-      "expired": "Y"
+      "expired": "N"
     },
     {
       "id": "16",
@@ -142,19 +142,19 @@
       "id": "24",
       "name": "jake the_snake",
       "hint": "DDT",
-      "expired": "N"
+      "expired": "Y"
     },
     {
       "id": "25",
       "name": "marty mcfly",
       "hint": "Wait a minute doc",
-      "expired": "N"
+      "expired": "Y"
     },
     {
       "id": "26",
       "name": "prince",
       "hint": "Turned himself into a symbol",
-      "expired": "N"
+      "expired": "Y"
     }
   ]
 }

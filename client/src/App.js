@@ -127,7 +127,7 @@ class App extends Component {
       })
       return
     } else {
-      for (var j = 0; j < 64; j++){
+      for (var j = 0; j < 128; j++){
         let index = Math.floor(Math.random() * this.state.tempArray.length)
         // const myNewColorArray = Object.assign([...this.state.colorArray], {
         //         [index]: `rgba(81,214,255,0)`
