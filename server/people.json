@@ -88,237 +88,144 @@
       "id": "15",
       "name": "vanilla ice",
       "hint": "Alright Stop, Collaborate and Listen",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "16",
       "name": "steve jobs",
       "hint": "Would you like an apple?",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "17",
       "name": "mr.t",
       "hint": "I pity the fool",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "18",
       "name": "gizmo",
       "hint": "Don't get him wet",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "19",
       "name": "flavor flav",
       "hint": "Yeah, boyeeeeee!",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "20",
       "name": "forest gump",
       "hint": "Life is like a box of chocolate",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "21",
       "name": "charizard",
       "hint": "Known in Japan as Lizardon",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "22",
       "name": "mister rogers",
       "hint": "hello neighbor",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "23",
       "name": "goonies",
       "hint": "hey you guys!",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "24",
       "name": "jake the_snake",
       "hint": "DDT",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "25",
       "name": "marty mcfly",
       "hint": "Wait a minute doc",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "26",
       "name": "prince",
       "hint": "Turned himself into a symbol",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "27",
       "name": "teen wolf",
       "hint": "Oh Ya, Like chase cars, and bite the mailman?",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "28",
       "name": "ewoks",
       "hint": "Ee chee wa maa!",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "29",
       "name": "terminator",
       "hint": "I'll Be Back!",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "30",
       "name": "donnie darko",
       "hint": "2001 film about a troubled teenager",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "31",
       "name": "macho man",
       "hint": "Ooh, yeah!",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "32",
       "name": "the joker",
       "hint": "Why So Serious?",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "33",
       "name": "wayne's world",
       "hint": "Shwing!",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "34",
       "name": "eleven",
       "hint": "Don't talk to strangers",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "35",
       "name": "louis_ck",
       "hint": "I do love standup",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "36",
       "name": "ray",
       "hint": "who you gonna call?",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "37",
       "name": "the rock",
       "hint": "People's Champ!",
-<<<<<<< HEAD
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     },
     {
       "id": "38",
       "name": "john snow",
       "hint": "winter is coming",
-<<<<<<< HEAD
       "expired": "Y"
     },
     {
@@ -338,9 +245,6 @@
       "name": "big bird",
       "hint": "children's tv show",
       "expired": "Y"
-=======
-      "expired": "N"
->>>>>>> 5962bb1ec185f25e2d0ea7cb3080b9c6d360bb60
     }
   ]
 }
