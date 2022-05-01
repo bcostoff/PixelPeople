@@ -16,26 +16,26 @@ class History extends Component {
     }
         
     componentDidMount() {
-        fetch('/history')
-            .then(response => response.json())
-            .then(data => {
-                let tempArray = data.arr;
-                let newArray = []
-                for (var i = 0; i < 9; i++){
-                    let randItem = Math.floor(Math.random() * tempArray.length)
-                    newArray.push(data.arr[randItem])
-                    tempArray.splice(randItem,1)
-                }
-                this.setState({ randomArray: newArray }, () => {
-                    let contentBlock = Array(9).fill().map((e, i) => {
-                        let index = this.state.randomArray[i];
-                        let block = ''
-                        block = <span className="col-30" key={i}><img src={'/images/characters/' + index + '.png'} className="" style={{ width: "70px" }} alt="Pixel Person"></img></span>
-                        return block
-                    })
-                    this.setState({contentBlock: contentBlock})
-                });
-            })
+        // fetch('/history')
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         let tempArray = data.arr;
+        //         let newArray = []
+        //         for (var i = 0; i < 9; i++){
+        //             let randItem = Math.floor(Math.random() * tempArray.length)
+        //             newArray.push(data.arr[randItem])
+        //             tempArray.splice(randItem,1)
+        //         }
+        //         this.setState({ randomArray: newArray }, () => {
+        //             let contentBlock = Array(9).fill().map((e, i) => {
+        //                 let index = this.state.randomArray[i];
+        //                 let block = ''
+        //                 block = <span className="col-30" key={i}><img src={'/images/characters/' + index + '.png'} className="" style={{ width: "70px" }} alt="Pixel Person"></img></span>
+        //                 return block
+        //             })
+        //             this.setState({contentBlock: contentBlock})
+        //         });
+        //     })
         
     }
    
