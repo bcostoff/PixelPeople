@@ -449,6 +449,12 @@
       "name": "she-ra",
       "hint": "the princesses of power",
       "expired": "N"
+    },
+    {
+      "id": "76",
+      "name": "captain picard",
+      "hint": "Make It So",
+      "expired": "N"
     }
   ]
 }
