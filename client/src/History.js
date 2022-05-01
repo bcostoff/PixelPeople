@@ -16,26 +16,26 @@ class History extends Component {
     }
         
     componentDidMount() {
-        // fetch('/history')
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         let tempArray = data.arr;
-        //         let newArray = []
-        //         for (var i = 0; i < 9; i++){
-        //             let randItem = Math.floor(Math.random() * tempArray.length)
-        //             newArray.push(data.arr[randItem])
-        //             tempArray.splice(randItem,1)
-        //         }
-        //         this.setState({ randomArray: newArray }, () => {
-        //             let contentBlock = Array(9).fill().map((e, i) => {
-        //                 let index = this.state.randomArray[i];
-        //                 let block = ''
-        //                 block = <span className="col-30" key={i}><img src={'/images/characters/' + index + '.png'} className="" style={{ width: "70px" }} alt="Pixel Person"></img></span>
-        //                 return block
-        //             })
-        //             this.setState({contentBlock: contentBlock})
-        //         });
-        //     })
+        fetch('/history')
+            .then(response => response.json())
+            .then(data => {
+                let tempArray = data.arr;
+                let newArray = []
+                for (var i = 0; i < 9; i++){
+                    let randItem = Math.floor(Math.random() * tempArray.length)
+                    newArray.push(data.arr[randItem])
+                    tempArray.splice(randItem,1)
+                }
+                this.setState({ randomArray: newArray }, () => {
+                    let contentBlock = Array(9).fill().map((e, i) => {
+                        let index = this.state.randomArray[i];
+                        let block = ''
+                        block = <span className="col-30 history-bg" key={i}><img src={'/images/characters/' + index + '.png'} className="" style={{ width: "70px" }} alt="Pixel Person"></img></span>
+                        return block
+                    })
+                    this.setState({contentBlock: contentBlock})
+                });
+            })
         
     }
    
@@ -51,18 +51,21 @@ class History extends Component {
                 <section className="modal-main">  
                     <div className="modal-body">
                         <FontAwesomeIcon className="close-btn" icon={faXmark} onClick={ this.props.hideHistoryModal } />
-                        <h2>In Case You Missed Them</h2>
+                        <h2>History</h2>
                         <hr></hr>
                         <br></br>
-                        <p className="body-text">Content goes here 
+                        <p className="body-text"><b>In Case You Missed Them!</b>
+                        <br></br><b>PIXEL PEOPLE</b> from the past will appear randomly each day. 
                         <br></br><br></br>
                         {this.state.contentBlock}
                         </p>
                         <div>&nbsp;</div>
-                        <hr></hr>
-                        <br></br>
-                        <h3>If you enjoyed this game:</h3>
-                        <button className="coffee-btn">Buy PIXEL PEOPLE a coffee!</button>
+                        <hr></hr>  
+                        <br></br>                     
+                        <p className="body-text">Send us your suggestions and you might get featured in <b>PIXEL PEOPLE.</b></p>
+                        <br></br><br></br>
+                        <button className="coffee-btn">EMAIL US</button>&nbsp;
+                        <button className="coffee-btn">TWITTER</button>
                         <br></br>
                     </div>
                     <div className="google-ads">Google Ads</div>

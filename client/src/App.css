@@ -1,5 +1,6 @@
 :root {
   --bgcolour: #51D6FF;
+  --colour: #40F99B;
 }
 
 html, body {
@@ -9,6 +10,10 @@ html, body {
 body {
   position: relative;
   background-color: var(--bgcolour);
+}
+
+.green{
+  color: var(--colour);
 }
 
 .App {
@@ -57,6 +62,12 @@ body {
   background-color: white;
   z-index:10;
   font-family: 'Press Start 2P', cursive;
+
+}
+
+.pp-logo{
+  letter-spacing: -0.75px;
+  left: 4px;
 }
 
 .App-header > span{
@@ -269,6 +280,7 @@ canvas{
   border-top: solid 6px white;
   border-left: solid 6px transparent;
   border-right: solid 6px transparent;
+  
 }
 
 .fade-out{
@@ -300,7 +312,14 @@ canvas{
   display: none;
 }
 
-
+.history-bg{
+  background-color: var(--bgcolour);
+  margin: 2px;
+  height: 80px;
+}
+.history-bg img{
+  padding-top: 5px;
+}
 
 /* Mobile Only */
 @media(max-width:991px){

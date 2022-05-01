@@ -260,7 +260,7 @@ class App extends Component {
           <FontAwesomeIcon className="info" icon={faCircleQuestion} onClick={this.handleInfoClick} />
           <FontAwesomeIcon className="history" icon={faUserAstronaut} onClick={this.handleHistoryClick} />
         </span>         
-        <span className="col-80">PIXEL PEOPLE</span>
+        <span className="col-80 pp-logo">PIXEL PEOPLE</span>
         <span className="col-10"><FontAwesomeIcon className="stats" icon={faChartSimple} onClick={this.handleStatsClick} /></span>
         </header>
         <Stats show={this.state.showModal} hideModal={this.hideModal} ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed}></Stats>
