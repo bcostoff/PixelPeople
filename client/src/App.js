@@ -33,7 +33,8 @@ class App extends Component {
       colorArray: [],
       tempArray: [],
       doAnim: true,
-      debugEnabled: true
+      debugEnabled: true,
+      current:0
     };
 
     // this.showModal = this.showModal.bind(this);
@@ -166,6 +167,10 @@ class App extends Component {
     this.setState({ ppStatus: status });
   };
 
+  setCurrent = (id) => {
+    this.setState({ current: id });
+  };
+
   setPlayed = () => {
     let played = this.state.ppPlayed
     played++;
@@ -263,7 +268,7 @@ class App extends Component {
         <span className="col-80 pp-logo">PIXEL PEOPLE</span>
         <span className="col-10"><FontAwesomeIcon className="stats" icon={faChartSimple} onClick={this.handleStatsClick} /></span>
         </header>
-        <Stats show={this.state.showModal} hideModal={this.hideModal} ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed}></Stats>
+        <Stats show={this.state.showModal} hideModal={this.hideModal} ppPlayed={this.state.ppPlayed} ppWon={this.state.ppWon} ppCurrentStreak={this.state.ppCurrentStreak} ppMaxStreak={this.state.ppMaxStreak} ppHintsUsed={this.state.ppHintsUsed} current={this.state.current}></Stats>
         <Info showInfo={this.state.showInfoModal} hideInfoModal={this.hideInfoModal}></Info>
         <History showHistory={this.state.showHistoryModal} hideHistoryModal={this.hideHistoryModal}></History>
         <Canvas draw={this.draw} />
@@ -279,6 +284,7 @@ class App extends Component {
           setHintUsedToday={this.setHintUsedToday}
           resetCurrentStreak={this.resetCurrentStreak}
           setStatus={this.setStatus}
+          setCurrent={this.setCurrent}
           ppStatus={this.state.ppStatus} ></Keyboard> 
       </div>
     );

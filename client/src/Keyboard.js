@@ -210,6 +210,7 @@ class Keyboard extends Component {
                 total: data.set1 + data.set2
             }, () => {
                 // console.log(this.state)
+                this.props.setCurrent(this.state.id)
             })) 
         //    console.log(this.props.ppHintUsedToday) 
         if (this.props.ppHintUsedToday === 'true') {

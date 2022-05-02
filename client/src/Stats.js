@@ -14,6 +14,25 @@ class Stats extends Component {
             
         }
     }
+
+    share = () => {
+        if (navigator.share) {
+            navigator.share({
+                title: 'web.dev',
+                text: 'Do you know who this is?\n<img src="https://pixel-people.herokuapp.com/images/characters/' + this.props.current + '.png" />',
+                url: 'https://pixel-people.herokuapp.com',
+            })
+                .then(() => console.log('Successful share'))
+                .catch((error) => console.log('Error sharing', error));
+        } else {
+            var text = 'Do you know who this is?\n<img src="https://pixel-people.herokuapp.com/images/characters/' + this.props.current + '.png" />';
+            navigator.clipboard.writeText(text).then(function () {
+                alert('Async: Copying to clipboard was successful!');
+            }, function (err) {
+                alert('Async: Could not copy text: ', err);
+            });
+        }
+    }
         
     componentDidMount() {
         
@@ -63,7 +82,7 @@ class Stats extends Component {
                     </div>
                     <div className="col-10 vl"></div>
                     <div className="col-35">
-                        <button type="button" className="share-btn">
+                        <button type="button" className="share-btn" onClick={this.share}>
                             SHARE
                         </button>
                     </div>
