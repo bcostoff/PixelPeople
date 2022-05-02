@@ -16,28 +16,42 @@ class Stats extends Component {
     }
 
     share = () => {
-        if (navigator.share) {
-            const image = fetch('https://pixel-people.herokuapp.com/images/characters/' + this.props.current + '.png');
-            const blob = image.blob();
-            const file = new File([blob], 'images.png', { type: 'image/png' });
-            navigator.share({ text: 'Do you know who this is?', files: [file] })
-                .then(() => console.log('Successful share'))
-                .catch((error) => console.log('Error sharing', error));
-            // navigator.share({
-            //     title: 'web.dev',
-            //     text: 'Do you know who this is?\n<img src="https://pixel-people.herokuapp.com/images/characters/' + this.props.current + '.png" />',
-            //     url: 'https://pixel-people.herokuapp.com',
-            // })
-            //     .then(() => console.log('Successful share'))
-            //     .catch((error) => console.log('Error sharing', error));
-        } else {
-            var text = 'Do you know who this is?\n<img src="https://pixel-people.herokuapp.com/images/characters/' + this.props.current + '.png" />';
-            navigator.clipboard.writeText(text).then(function () {
-                alert('Async: Copying to clipboard was successful!');
-            }, function (err) {
-                alert('Async: Could not copy text: ', err);
+        // if (navigator.share) {
+        
+        // } else {
+        //     var text = 'Do you know who this is?\n<img src="https://pixel-people.herokuapp.com/images/characters/' + this.props.current + '.png" />';
+        //     navigator.clipboard.writeText(text).then(function () {
+        //         alert('Async: Copying to clipboard was successful!');
+        //     }, function (err) {
+        //         alert('Async: Could not copy text: ', err);
+        //     });
+        // }
+        fetch("https://pixel-people.herokuapp.com/images/characters/' + this.props.current + '.png")
+            .then(function(response) {
+                return response.blob()
+            })
+            .then(function(blob) {
+
+                var file = new File([blob], "person.jpeg", {type: 'image/jpeg'});
+                var filesArray = [file];
+                var shareData = { files: filesArray };
+
+
+                if (navigator.canShare && navigator.canShare(shareData)) {
+
+                // Adding title afterwards as navigator.canShare just
+                // takes files as input
+                shareData.title = "Do you know who this is?"
+
+                navigator.share(shareData)
+                .then(() => console.log('Share was successful.'))
+                .catch((error) => console.log('Sharing failed', error));
+
+                } else {
+                    console.log("Your system doesn't support sharing files.");
+                }
+            
             });
-        }
     }
         
     componentDidMount() {
