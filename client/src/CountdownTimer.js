@@ -27,9 +27,18 @@ const CountdownTimer = ({ targetDate }) => {
   } else {
     return (
       <ShowCounter
-        hours={hours}
-        minutes={minutes}
-        seconds={seconds}
+        hours={hours.toLocaleString('en-US', {
+            minimumIntegerDigits: 2,
+            useGrouping: false
+          })}
+        minutes={minutes.toLocaleString('en-US', {
+            minimumIntegerDigits: 2,
+            useGrouping: false
+          })}
+        seconds={seconds.toLocaleString('en-US', {
+            minimumIntegerDigits: 2,
+            useGrouping: false
+          })}
       />
     );
   }

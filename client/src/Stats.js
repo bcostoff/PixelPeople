@@ -17,13 +17,19 @@ class Stats extends Component {
 
     share = () => {
         if (navigator.share) {
-            navigator.share({
-                title: 'web.dev',
-                text: 'Do you know who this is?\n<img src="https://pixel-people.herokuapp.com/images/characters/' + this.props.current + '.png" />',
-                url: 'https://pixel-people.herokuapp.com',
-            })
+            const image = fetch('https://pixel-people.herokuapp.com/images/characters/' + this.props.current + '.png');
+            const blob = image.blob();
+            const file = new File([blob], 'images.png', { type: 'image/png' });
+            navigator.share({ text: 'Do you know who this is?', files: [file] })
                 .then(() => console.log('Successful share'))
                 .catch((error) => console.log('Error sharing', error));
+            // navigator.share({
+            //     title: 'web.dev',
+            //     text: 'Do you know who this is?\n<img src="https://pixel-people.herokuapp.com/images/characters/' + this.props.current + '.png" />',
+            //     url: 'https://pixel-people.herokuapp.com',
+            // })
+            //     .then(() => console.log('Successful share'))
+            //     .catch((error) => console.log('Error sharing', error));
         } else {
             var text = 'Do you know who this is?\n<img src="https://pixel-people.herokuapp.com/images/characters/' + this.props.current + '.png" />';
             navigator.clipboard.writeText(text).then(function () {
