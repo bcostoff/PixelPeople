@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import './Modal.css';
+import CountdownTimer from './CountdownTimer';
 
 class Stats extends Component {
     constructor(props) {
@@ -23,6 +24,8 @@ class Stats extends Component {
     }
 
     render() {
+        const TOMORROW_MIDNIGHT = new Date()
+        TOMORROW_MIDNIGHT.setHours(24, 0, 0, 0)
         const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
         let winPercentage = 0;
         if (isNaN(this.props.ppWon) && isNaN(this.props.ppPlayed)) {
@@ -56,7 +59,7 @@ class Stats extends Component {
                     <div className="col-55">
                         <span className="next">NEXT PIXEL PUZZLE</span>
                         <br></br>
-                        <span className="clock">04:25:12</span>
+                        <CountdownTimer targetDate={TOMORROW_MIDNIGHT} />
                     </div>
                     <div className="col-10 vl"></div>
                     <div className="col-35">

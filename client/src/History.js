@@ -21,13 +21,14 @@ class History extends Component {
             .then(data => {
                 let tempArray = data.arr;
                 let newArray = []
-                for (var i = 0; i < 9; i++){
+                let count = data.arr.length
+                for (var i = 0; i < count; i++){
                     let randItem = Math.floor(Math.random() * tempArray.length)
                     newArray.push(data.arr[randItem])
                     tempArray.splice(randItem,1)
                 }
                 this.setState({ randomArray: newArray }, () => {
-                    let contentBlock = Array(9).fill().map((e, i) => {
+                    let contentBlock = Array(count).fill().map((e, i) => {
                         let index = this.state.randomArray[i];
                         let block = ''
                         block = <span className="col-30 history-bg" key={i}><img src={'/images/characters/' + index + '.png'} className="" style={{ width: "70px" }} alt="Pixel Person"></img></span>

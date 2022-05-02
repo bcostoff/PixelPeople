@@ -80,7 +80,7 @@ class App extends Component {
       this.state.ppMaxStreak = localStorage.getItem('ppMaxStreak')
     }else{
       localStorage.setItem('ppMaxStreak', '')
-    }
+    } 
 
     if("ppHintsUsed" in localStorage){
       this.state.ppHintsUsed = localStorage.getItem('ppHintsUsed')

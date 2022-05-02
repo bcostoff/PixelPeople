@@ -32,7 +32,7 @@ class Info extends Component {
                         <h2>How To Play</h2>
                         <hr></hr>
                         <br></br>
-                        <p className="body-text">Each day a new <b>PIXEL PUZZLE</b> will appear. If you're stuck don't forget to use your hint. To give up and see the answer click <span class="green">[?]</span> on the keyboard.
+                        <p className="body-text">Each day a new <b>PIXEL PUZZLE</b> will appear. If you're stuck don't forget to use your hint. To give up and see the answer click <span className="green">[?]</span> on the keyboard.
                         <br></br><br></br>
                         Use <u><b>ALL</b></u> of the spaces below the<br></br><b>PIXEL PEOPLE</b> to guess who/what it is.
                         <br></br><br></br>
