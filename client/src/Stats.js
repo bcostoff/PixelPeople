@@ -26,13 +26,14 @@ class Stats extends Component {
         //         alert('Async: Could not copy text: ', err);
         //     });
         // }
-        fetch("https://pixel-people.herokuapp.com/images/characters/' + this.props.current + '.png")
+        // fetch('/images/characters/' + this.props.current + '.png')
+        fetch('https://pixel-people.herokuapp.com/images/characters/' + this.props.current + '.png')
             .then(function(response) {
                 return response.blob()
             })
             .then(function(blob) {
 
-                var file = new File([blob], "person.jpeg", {type: 'image/jpeg'});
+                var file = new File([blob], "person.png", {type: 'image/png'});
                 var filesArray = [file];
                 var shareData = { files: filesArray };
 
