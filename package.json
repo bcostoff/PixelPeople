@@ -16,7 +16,7 @@
   "dependencies": {
     "express": "^4.17.3",
   }
-  "dev-dependencies": {
+  "devDependencies": {
     "express": "^4.17.3",
     "mysql": "^2.18.1"
   }
