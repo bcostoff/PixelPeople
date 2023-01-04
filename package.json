@@ -4,7 +4,7 @@
   "description": "Fun guess em game built in react.",
   "main": "index.js",
   "scripts": {
-    "start": "npm install; node server/index.js",
+    "start": "node server/index.js",
     "build": "cd client && npm install && npm run build"
   },
   "engines": {
